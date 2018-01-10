@@ -1,0 +1,8 @@
+<h2><%= @task.name %></h2>
+<p>
+  Name: <%= @task.name %>
+</p>
+Orders:
+  <% @task.orders.each do |order| %>
+    <%= link_to order.site.name, site_path(order.site) %>
+  <% end %>

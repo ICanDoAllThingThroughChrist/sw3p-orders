@@ -1,0 +1,2 @@
+class SiteTasksController < ApplicationController
+end
