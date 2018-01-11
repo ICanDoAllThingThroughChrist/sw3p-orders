@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :orders
-  resources :tasks
-  resources :sites
+  resources :sites do
+    resources :tasks 
+  end 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
