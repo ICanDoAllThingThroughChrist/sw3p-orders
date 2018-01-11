@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end 
 
   def require_logged_in 
-    return redirect_to(controller: 'session', action: 'new')unless logged_in? 
+    return redirect_to(controller: 'sessions', action: 'new')unless logged_in? 
   end
 end
