@@ -9,7 +9,9 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect_to '/'
         else
-          redirect_to new_user_path
+          #raise params
+          redirect_to new_user_path, notice: "name is not unique"
+          #raise params
         end
       end
 
