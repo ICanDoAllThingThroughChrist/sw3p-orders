@@ -1,0 +1,18 @@
+<form action= "/sites" method="POST">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<div>
+    <label for="site_name">Name</label>
+    <div>
+        <input type = "text" name="site[name]" value= "<%=@site.name%>" placeholder="Name" />
+    </div>
+</div>
+<div>
+    <label for="site_task">Required Task</label>
+    <% 5.times.each do %>
+        <div>
+        <input name="site[task][][name]" placeholder="Task name"/>
+        </div>
+    <% end %>
+</div>
+<input type="submit" value="Create Site" />
+</form>
