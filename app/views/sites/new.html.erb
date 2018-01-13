@@ -7,6 +7,12 @@
     </div>
 </div>
 <div>
+<label for="site_task_ids">Select Tasks</label>
+<% @task.each do |task|%>
+    <input type="checkbox" name="site[task_ids][]" value= "<%=task.id %>"><%= task.name %> </input>
+<% end %>
+</div>
+<div>
     <label for="site_task">Required Task</label>
     <% 5.times.each do %>
         <div>

@@ -1,5 +1,5 @@
 <h1> all my sites </h1>
 <% @site.each do |i| %>
-<h3>name: <%=i.name%>%> </h3>
+<h3>Name: <%=i.name%> </h3>
 <% end %>
-<% link_to "create new site" new_site_path%>
+<%= link_to "create new site", new_site_path %>
