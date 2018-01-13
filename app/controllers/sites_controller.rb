@@ -4,11 +4,15 @@ class SitesController < ApplicationController
     end
     def new 
         @site = Site.new 
+        3.times do
+            @site.task.build
+        end
         @task = Task.all
     end
     def create
-        binding.pry
+        #binding.pry
         @site = Site.new(site_params)
+        #binding.pry
         if @site.save 
             redirect_to sites_path
         else 

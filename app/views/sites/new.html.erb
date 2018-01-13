@@ -1,24 +1,23 @@
-<form action= "/sites" method="POST">
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-<div>
-    <label for="site_name">Name</label>
+<h2>New Site Form</h2>
+<%= form_for @site do |f|%>
     <div>
-        <input type = "text" name="site[name]" value= "<%=@site.name%>" placeholder="Name" />
+        <%= f.label :name %>
+        <%= f.text_field :name %>
     </div>
-</div>
-<div>
-<label for="site_task_ids">Select Tasks</label>
-<% @task.each do |task|%>
-    <input type="checkbox" name="site[task_ids][]" value= "<%=task.id %>"><%= task.name %> </input>
-<% end %>
-</div>
-<div>
-    <label for="site_task">Required Task</label>
-    <% 5.times.each do %>
+   <!-- Collection of checkboxes for equipment ids -->
+<p></p>
+    <div>
+        <%= f.label "Select Tasks" %>
         <div>
-        <input name="site[task][][name]" placeholder="Task name"/>
+            <p><%= f.collection_select(:task_ids, Task.all, :id, :name) %></p>
         </div>
-    <% end %>
-</div>
-<input type="submit" value="Create Site" />
-</form>
+    </div>
+    <!-- 3 New Equipment Fields -->
+            <%= f.fields_for :task do |task_fields| %>
+                <%= task_fields.label :name %>
+                <div>
+                    <%= task_fields.text_field :name %>
+                </div>
+            <% end %>
+         <%= f.submit "Create Site" %>
+<%end%>
