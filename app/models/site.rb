@@ -8,9 +8,9 @@ class Site < ApplicationRecord
         task_attributes.each do |key, value|
             if !value[:name].empty?
                 if new_item = Task.find_by(name: value[:name])
-                    self.tasks << new_item 
+                    self.task << new_item 
                 else
-                    self.tasks.build(name: value[:name])
+                    self.task.build(name: value[:name])
                 end 
             end 
         end
