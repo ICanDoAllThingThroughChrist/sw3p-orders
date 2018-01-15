@@ -25,6 +25,6 @@ class SitesController < ApplicationController
 
     private 
     def site_params
-        params.require(:site).permit(:name, task: [:name], task_ids: [])
+        params.require(:site).permit(:name, task_ids: [], task_attributes: [:name])
     end 
 end
