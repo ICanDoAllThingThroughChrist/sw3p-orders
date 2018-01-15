@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create2'
   post '/logout' => 'sessions#destroy'
-  resources :users, only: [:show, :create]
+  resources :users, only: [:show, :create, :new]
   resources :sites
   resources :sites, only: [:index, :new, :create] do 
     resources :tasks

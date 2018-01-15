@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+    before_action :require_login
     def index
         @site = Site.all
     end
@@ -27,4 +28,8 @@ class SitesController < ApplicationController
     def site_params
         params.require(:site).permit(:name, task_ids: [], task_attributes: [:name])
     end 
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id    
+  end
 end
