@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-    before_action :require_login
+    before_action :if_not_admin, only: [:new, :create]
     def index
         @site = Site.all
     end
@@ -29,7 +29,4 @@ class SitesController < ApplicationController
         params.require(:site).permit(:name, task_ids: [], task_attributes: [:name])
     end 
 
-  def require_login
-    return head(:forbidden) unless session.include? :user_id    
-  end
 end
