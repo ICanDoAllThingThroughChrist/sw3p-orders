@@ -16,6 +16,7 @@ class SitesController < ApplicationController
         #binding.pry
         if @site.save 
             redirect_to sites_path
+            binding.pry
         else 
             render :new 
         end 
