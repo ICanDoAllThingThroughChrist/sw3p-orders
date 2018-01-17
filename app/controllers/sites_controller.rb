@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
     before_action :redirect_if_not_admin!, only: [:new, :create]
-    before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :create, :index]
 
     def index
         @site = Site.all
@@ -22,9 +22,9 @@ class SitesController < ApplicationController
             render :new 
         end 
     end
-    # def show 
-    #     @site = Site.find_by(params[:id])
-    # end 
+    def show 
+        @site = Site.find_by(params[:id])
+    end 
 
     private 
     def site_params
