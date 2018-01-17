@@ -14,12 +14,25 @@ class SessionsController < ApplicationController
       #@user = User.find_by(email: params[:user][:email])
     end
 
+    def create2
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        u.name = auth['info']['name']
+        u.email = auth['info']['email']
+        u.image = auth['info']['image']
+      end
+   
+      session[:user_id] = @user.id
+   
+      render 'welcome/home'
+    end
+
+
     def create
       binding.pry
       @user = User.find_by(email: params[:session][:email].downcase)
       if @user && @user.authenticate(params[:session][:password])
        log_in @user
-      redirect_to user
+       redirect_to user
       else
         flash.now.alert = "Email or password is invalid"
         render "new"

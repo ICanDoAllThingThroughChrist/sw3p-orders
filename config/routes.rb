@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:show, :create]
   root 'welcome#home'
-  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create2'
   resources :sessions
 end

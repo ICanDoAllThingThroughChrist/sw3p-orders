@@ -1,7 +1,5 @@
 class SitesController < ApplicationController
-    before_action :redirect_if_not_admin!, only: [:new, :create]
-    before_action :authenticate_user!, only: [:new, :create, :index]
-
+    before_action :logged_in?, only: [:new, :create, :index]
     def index
         @site = Site.all
     end
