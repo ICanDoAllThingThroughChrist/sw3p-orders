@@ -13,7 +13,7 @@ class SitesController < ApplicationController
     def create
         #binding.pry
         @site = Site.new(site_params)
-        #binding.pry
+        binding.pry
         if @site.save 
             redirect_to sites_path
             binding.pry
@@ -31,3 +31,15 @@ class SitesController < ApplicationController
     end 
 
 end
+#             {"name"=>"NE Service Center",
+#             "task_attributes"=> {"0"=>{"name"=>"1"}, 
+#                                 "1"=>{"name"=>"2"}, 
+#                                 "2"=>"name"=>"3"},
+#                                 }
+# }
+
+# # To whitelist the following data:
+# # {"book" => {"title" => "Some Book",
+# #             "chapters_attributes" => { "1" => {"title" => "First Chapter"},
+# #                                        "2" => {"title" => "Second Chapter"}}}}
+# params.require(:book).permit(:title, chapters_attributes: [:title])
