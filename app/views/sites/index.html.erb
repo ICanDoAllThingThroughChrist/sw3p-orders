@@ -1,13 +1,15 @@
 <h1> all my sites </h1>
-<% @site.each do |site| %>
-<h3>Name: <%=site.name%> </h3>
- <% if site.task.count > 0 %>
-            <p>Required Task</p>
-            <ul>
-                <% site.task.each do |task| %>
-                    <li><%= task.name %></li>
-                <% end %>
-            </ul>
+<%#if current_user %>
+    <% @site.each do |site| %>
+    <h3>Name: <%=site.name%> </h3>
+        <% if site.tasks.count > 0 %>
+                    <p>Required Task</p>
+                    <ul>
+                        <% site.tasks.each do |task| %>
+                            <li><%= task.name %></li>
+                        <% end %>
+                    </ul>
         <% end %>
-<% end %>
+    <% end %>
+<%# end %>
 <%= link_to "create new site", new_site_path %>

@@ -1,9 +1,7 @@
 class Site < ApplicationRecord
     has_many :orders, dependent: :destroy
-    has_many :task, through: :orders
-    belongs_to :user
-
-    accepts_nested_attributes_for :task
+    has_many :tasks, through: :orders
+    accepts_nested_attributes_for :tasks
     def task_attributes=(task_attributes)
         binding.pry
         task_attributes.each do |key, value|
@@ -28,3 +26,9 @@ class Site < ApplicationRecord
         end
     end
 end
+
+# class Survey|Site < ActiveRecord::Base
+#     has_many :questions|:tasks
+#     accepts_nested_attributes_for :questions|:tasks
+# end
+

@@ -5,9 +5,7 @@ class SitesController < ApplicationController
     end
     def new 
         @site = Site.new 
-        3.times do
-            @site.task.build
-        end
+        @site.tasks.build
         @task = Task.all
     end
     def create
@@ -25,12 +23,37 @@ class SitesController < ApplicationController
         @site = Site.find_by(params[:id])
     end 
 
+    def orders
+        @site = Site.find_by(params[:id])
+        @users = User.all
+        @tasks = @site.tasks
+    end
+
     private 
     def site_params
-        params.require(:site).permit(:name, task_ids: [], task_attributes: [:name])
+        binding.pry
+        params.require(:site).permit(
+         :name,
+         :task_ids => [], 
+         :tasks_attributes => [:id, :name],
+         )
     end 
 
 end
+# { "site"=>
+#     {"name"=>"westpark", 
+#     "task_ids"=> [], 
+#     "tasks_attributes"=>
+#         [] =>
+#             {"name"=>"3"}
+#     }
+#     }
+# }
+# params.require(:site).permit(:name,
+#       :task_ids => [],
+#       :tasks_attributes => [:id, :content, :participant_id]
+#       ])
+#addresses_attributes: [
 #             {"name"=>"NE Service Center",
 #             "task_attributes"=> {"0"=>{"name"=>"1"}, 
 #                                 "1"=>{"name"=>"2"}, 
@@ -43,3 +66,16 @@ end
 # #             "chapters_attributes" => { "1" => {"title" => "First Chapter"},
 # #                                        "2" => {"title" => "Second Chapter"}}}}
 # params.require(:book).permit(:title, chapters_attributes: [:title])
+# before_action :set_survey, only: [:show, :edit, :update, :destroy, :answers]
+
+# # ... ignoring content that hasn't changed from scaffold
+
+
+# # Survey|Site
+# def survey_params
+#     params.require(:survey).permit(:name,
+#       :questions_attributes => 
+#       [:id, :content,
+#        :answers_attributes => [:id, :content, :participant_id]
+#       ])
+# end

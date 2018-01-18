@@ -7,6 +7,13 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  #has_many :orders
   has_many :site, through: :orders
+  accepts_nested_attributes_for :site
 end
 #http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
+
+# class Participant|User < ActiveRecord::Base
+#   has_many :answers|:orders
+#   has_many :questions, through: :answers|:orders
+# end
