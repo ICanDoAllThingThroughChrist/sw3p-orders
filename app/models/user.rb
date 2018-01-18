@@ -7,5 +7,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  has_many :site, through: :orders
 end
 #http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
