@@ -40,6 +40,7 @@ class SitesController < ApplicationController
     end 
 
 end
+#http://weblog.rubyonrails.org/2009/1/26/nested-model-forms/
 # { "site"=>
 #     {"name"=>"westpark", 
 #     "task_ids"=> [], 
