@@ -2,10 +2,10 @@
 <%#if current_user %>
     <% @site.each do |site| %>
     <h3>Name: <%=site.name%> </h3>
-        <% if site.tasks.count > 0 %>
+        <% if site.task.count > 0 %>
                     <p>Required Task</p>
                     <ul>
-                        <% site.tasks.each do |task| %>
+                        <% site.task.each do |task| %>
                             <li><%= task.name %></li>
                         <% end %>
                     </ul>

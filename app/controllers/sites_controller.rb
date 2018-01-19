@@ -5,7 +5,7 @@ class SitesController < ApplicationController
     end
     def new 
         @site = Site.new 
-        @site.tasks.build
+        @site.task.build
         @task = Task.all
     end
     def create
@@ -31,23 +31,17 @@ class SitesController < ApplicationController
 
     private 
     def site_params
-        binding.pry
-        params.require(:site).permit(
-        :name,
-        task_ids: [], 
-        tasks_attributes: [
-            :name
-        ]
-         )
+        #binding.pry
+        params.require(:site).permit(:name, :task_ids, task_attributes: [:name])
+        # params.require(:expedition).permit(:name, :description, :length, :difficulty, equipment: [:name])
     end 
 
 end
-# => :site
-#     :name,
-#     task_ids: [], 
-#     tasks_attributes: [
-#       :name
-#                       ]
+# [2] pry(#<SitesController>)> params
+# => { "site"=> 
+#     {"name"=>"NE Service Center", 
+#     "task_ids"=>"1", 
+#     "tasks"=>{"name"=>"2"}}
   
 #    :name,
 #     addresses_attributes: [
@@ -58,6 +52,8 @@ end
 #       :zipcode,
 #       :address_type
 #     ] 
+{ "site"=> {"name"=>"NE Service Center", "task_ids"=>"1", "tasks"=>{"name"=>"2"}} }
+
 #http://weblog.rubyonrails.org/2009/1/26/nested-model-forms/
 # { "site"=>
 #     {"name"=>"westpark", 

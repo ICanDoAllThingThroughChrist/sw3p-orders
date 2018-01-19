@@ -13,10 +13,11 @@
         </div>
     </div>
     <!-- 3 New Equipment Fields -->
-            <%= f.fields_for :tasks do |task_fields| %>
-                <%= task_fields.label :TasksName %>
+               
+            <%= f.fields_for :task do |task_field| %>
+                <%= task_field.label :name %>
                 <div>
-                    <%= task_fields.text_field :name %>
+                    <%= task_field.text_field :name %>
                 </div>
             <% end %>
          <%= f.submit "Create Site" %>

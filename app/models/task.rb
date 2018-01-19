@@ -1,8 +1,8 @@
 class Task < ApplicationRecord
-    belongs_to :sites
     has_many :orders
-    has_many :users, through: :orders
-    accepts_nested_attributes_for :orders    
+    has_many :site, through: :orders
+    #has_many :users
+    # accepts_nested_attributes_for :sites  
 end
 
 # class Question|Task < ActiveRecord::Base
