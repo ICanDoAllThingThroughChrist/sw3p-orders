@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'
   resources :sessions
-  # resources :sites do
-  #     get 'orders', on: :member
-  # end
-  resources :users
+  resources :users, only: [:show] do 
+    resources :tasks, only:[:show, :index]
+  end 
 end

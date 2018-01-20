@@ -52,7 +52,7 @@ end
 #       :zipcode,
 #       :address_type
 #     ] 
-{ "site"=> {"name"=>"NE Service Center", "task_ids"=>"1", "tasks"=>{"name"=>"2"}} }
+# { "site"=> {"name"=>"NE Service Center", "task_ids"=>"1", "tasks"=>{"name"=>"2"}} }
 
 #http://weblog.rubyonrails.org/2009/1/26/nested-model-forms/
 # { "site"=>

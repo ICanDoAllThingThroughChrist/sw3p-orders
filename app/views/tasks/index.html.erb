@@ -1,0 +1,8 @@
+
+<% @tasks.each do |task| %>
+  <div>
+    <%= task.name %> - - <%= last_updated task %> %>
+  </div>
+<% end %
+  #-- change the name to a link -->>
+  <h3>by: <%= link_to task.user.name, user_tasks_path(task.user) %></h3>

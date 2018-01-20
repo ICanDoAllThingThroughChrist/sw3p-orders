@@ -1,0 +1,8 @@
+ 
+<%= form_for(@task) do |f| %>
+    <label><%= last_updated @post %></label><br>
+  <label>Post title:</label><br>
+  <label>Task title:</label><br>
+  <%= f.text_field :name %><br>
+  <%= f.submit %>
+<% end %>

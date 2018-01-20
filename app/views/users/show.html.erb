@@ -9,3 +9,9 @@
     </section>
   </aside>
 </div>
+ 
+<h1><%= @user.name %></h1>
+<p>Tasks:</p>
+<% @user.tasks.each do |task| %>
+  <div><%= task.name %> - <%= last_updated task %></div>
+<% end %>

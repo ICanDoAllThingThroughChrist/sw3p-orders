@@ -2,7 +2,9 @@
 <p>
   Name: <%= @task.name %>
 </p>
+<p>Last updated:<%= last_updated @task %></p>
 Orders:
   <% @task.orders.each do |order| %>
     <%= link_to order.site.name, site_path(order.site) %>
   <% end %>
+</p>
