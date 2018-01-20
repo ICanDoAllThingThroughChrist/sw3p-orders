@@ -34,18 +34,19 @@ class TasksController < ApplicationController
     end
      
     def edit
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      if user.nil?
-        redirect_to user_path, alert: "User not found."
+      if params[:user_id]
+        user = User.find_by(id: params[:user_id])
+        if user.nil?
+          redirect_to user_path, alert: "User not found."
+        else
+          @post = user.posts.find_by(id: params[:id])
+          redirect_to user_tasks_path(user), alert: "Task not found." if @task.nil?
+        end
       else
-        @post = user.posts.find_by(id: params[:id])
-        redirect_to user_tasks_path(user), alert: "Task not found." if @task.nil?
+        @post = Post.find(params[:id])
       end
-    else
-      @post = Post.find(params[:id])
     end
-  en
+  
     def task_params
         params.require(:task).permit(:name, :user_id)
       end
