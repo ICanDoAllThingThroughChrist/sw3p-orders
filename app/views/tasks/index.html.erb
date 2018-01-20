@@ -17,3 +17,8 @@
 <% end %
   #-- change the name to a link -->>
   <h3>by: <%= link_to task.user.name, user_tasks_path(task.user) %></h3>
+   <h2><%= task.name %></h2>
+ 
+  <!-- change the name to a link -->
+  <h3>by: <%= link_to task.user.name, user_tasks_path(task.user) %></h3>
+  <p><%= task.description %></p>

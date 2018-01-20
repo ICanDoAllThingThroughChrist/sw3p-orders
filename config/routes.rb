@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'
   resources :sessions
-  resources :users, only: [:show] do 
-    resources :tasks, only:[:show, :index]
+  resources :users, only: [:show, :index] do 
+    resources :tasks, only:[:show, :index, :new, :edit]
   end 
+  namespace :admin do
+    resources :stats, only: [:index]
+  end
 end

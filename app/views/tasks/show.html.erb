@@ -1,10 +1,20 @@
-<h2><%= @task.name %></h2>
 <p>
   Name: <%= @task.name %>
 </p>
 <p>Last updated:<%= last_updated @task %></p>
-Orders:
+<h1><%= @user.name %></h1>
+ 
+<%= link_to "New Task", new_user_task_path(@user) %>
+ 
+<p>Tasks:</p>
+<% @user.tasks.each do |task| %>
+  <div><%= task.name %></div>
+<% end %>
+
+<p>Orders:</p>
   <% @task.orders.each do |order| %>
     <%= link_to order.site.name, site_path(order.site) %>
   <% end %>
 </p>
+<h1><%= @task.name %></h1>
+<p>by <%= link_to @task.user.name, user_path(@task.user) if @task.user %> (<%= link_to "Edit Post", edit_user_task_path(@task.user, @task) if @task.user %>)</p>
