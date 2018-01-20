@@ -1,4 +1,15 @@
 
+<h1>Believe It Or Not I'm On Air</h1>
+<!-- add this new code above the @tasks.each loop -->
+<div>
+  <h3>Filter tasks:</h3>
+  <%= form_tag("/tasks", method: "get") do %>
+    <%= select_tag "user", options_from_collection_for_select(@users, "id", "name"), include_blank: true %>
+    <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+<!-- end new code -->
 <% @tasks.each do |task| %>
   <div>
     <%= task.name %> - - <%= last_updated task %> %>
