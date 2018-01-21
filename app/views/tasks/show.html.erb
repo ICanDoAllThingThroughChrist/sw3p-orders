@@ -10,8 +10,8 @@
   <div><%= task.name %></div>
 <% end %>
 
-<p>Orders:</p>
-  <% @task.orders.each do |order| %>
-    <%= link_to order.site.name, site_path(order.site) %>
+<p>Site Tasks:</p>
+  <% @task.sitetasks.each do |sitetask| %>
+    <%= link_to sitetask.site.name, site_path(sitetask.site) %>
   <% end %>
 </p>

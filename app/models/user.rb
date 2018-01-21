@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   #has_many :orders
-  has_many :site, through: :orders
+  has_many :site, through: :sitetasks
   has_many :task
   accepts_nested_attributes_for :site
   # accepts_nested_attributes_for :task

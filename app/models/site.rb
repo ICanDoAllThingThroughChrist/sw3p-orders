@@ -1,6 +1,6 @@
 class Site < ApplicationRecord
-    has_many :orders
-    has_many :task, through: :orders
+    has_many :sitetasks
+    has_many :task, through: :sitetasks
     accepts_nested_attributes_for :task
     def task_attributes=(task_attributes)
         binding.pry
@@ -16,13 +16,13 @@ class Site < ApplicationRecord
     end 
 
     def add_task(task_id)
-    order = self.orders.find_by(task_id: task_id)
-    if order.blank?
+    sitetask = self.sitetasks.find_by(task_id: task_id)
+    if sitetask.blank?
         task = Task.find_by(id: task_id)
-        task.orders.build(quantity: 1, site: self)
-        else order
-        order.quantity += 1
-        order
+        task.sitetasks.build(quantity: 1, site: self)
+        else sitetask
+        sitetask.quantity += 1
+        sitetask
         end
     end
 end
