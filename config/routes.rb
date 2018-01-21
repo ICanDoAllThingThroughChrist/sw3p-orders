@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :sites, only: [:index, :new, :create]
-  resources :orders, only: [:show, :create]
+  resources :sitetasks, only: [:show, :create]
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'
   resources :sessions
-  resources :users, only: [:show, :index] do 
-    resources :tasks, only:[:show, :index, :new, :edit]
-  end 
+  resources :users, only: [:show, :index, :new] 
+  # do 
+  #   resources :tasks, only:[:show, :index, :new, :edit]
+  # end 
   namespace :admin do
     resources :stats, only: [:index]
   end

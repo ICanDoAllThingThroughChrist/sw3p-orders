@@ -47,6 +47,12 @@ class TasksController < ApplicationController
       end
     end
   
+    def update
+      @post = Post.find(params[:id])
+      authorize @post
+    # perform an update
+    end
+
     def task_params
         params.require(:task).permit(:name, :user_id)
       end
