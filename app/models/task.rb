@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
     has_many :sitetasks
     has_many :site, through: :sitetasks 
-    belongs_to :user
+    #belongs_to :user
     def self.by_user(user_id)
         where(user: user_id)
     end
