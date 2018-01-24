@@ -1,15 +1,16 @@
 class Site < ApplicationRecord
+    belongs_to :order
     has_many :sitetasks
-    has_many :task, through: :sitetasks
-    accepts_nested_attributes_for :task
-    def task_attributes=(task_attributes)
+    has_many :tasks, through: :sitetasks
+    accepts_nested_attributes_for :tasks
+    def tasks_attributes=(task_attributes)
         binding.pry
         task_attributes.each do |key, value|
             if !value[:name].empty?
                 if new_task = Task.find_by(name: value[:name])
-                    self.task << new_task 
+                    self.tasks << new_task 
                 else
-                    self.task.build(name: value[:name])
+                    self.tasks.build(name: value[:name])
                 end 
             end 
         end

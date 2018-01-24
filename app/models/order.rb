@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
-    has_many :site
-    has_many :task
+    belongs_to :user
+    has_many :sites
+    has_many :tasks
 end

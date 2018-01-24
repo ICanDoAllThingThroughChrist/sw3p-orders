@@ -5,7 +5,7 @@ class SitesController < ApplicationController
     end
     def new 
         @site = Site.new 
-        @site.task.build
+        @site.tasks.build
         @task = Task.all
     end
     def create

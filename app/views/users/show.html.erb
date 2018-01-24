@@ -11,6 +11,7 @@
 </div>
  
 <h1><%= @user.name %></h1>
+<%= link_to "New Order", new_user_order_path(@user)%>
 <p>Tasks:</p>
 <% @user.tasks.each do |task| %>
   <div><%= task.name %> - <%= last_updated task %></div>

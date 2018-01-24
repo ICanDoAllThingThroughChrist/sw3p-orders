@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122034437) do
+ActiveRecord::Schema.define(version: 20180124040657) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "site_id"
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180122034437) do
     t.integer "inventory"
     t.integer "user_id"
     t.boolean "task_status"
+    t.integer "order_id"
   end
 
   create_table "users", force: :cascade do |t|
