@@ -1,14 +1,19 @@
 <%= form_for @order, url: {action: "create"} do |order_form| %>
-
 <h3>Order Form</h3>
     <%= order_form.hidden_field :user_id %>
     <h3>select task </h3>
-    <%= fields_for @order.tasks.build do |task_form| %>
-        <%= task_form.collection_select(:task, Task.all, :id, :name) %>
+    <%= fields_for @order.task do |task_form| %>
+        <%= task_form.collection_select(:task) %>
     <% end %><br>
     <h3>select site </h3>
-    <%= fields_for @order.sites.build do |site_form| %>
-        <%= site_form.collection_select(:site_id, Site.all, :id, :name) %>
+    <%= fields_for @order.site do |site_form| %>
+        <%= site_form.collection_select(:site) %>
+    <% end %><br>
+    <%= fields_for @order.deadline do |deadline_form| %>
+        <%= site_form.collection_select(:deadline) %>
+    <% end %><br>
+    <%= fields_for @order.frequency do |frequency_form| %>
+        <%= site_form.collection_select(:frequency) %>
     <% end %><br>
 <p><%= order_form.submit "Create"%></p>
 <% end %>
