@@ -1,12 +1,13 @@
 <%= form_for @order, url: {action: "create"} do |order_form| %>
+
 <h3>Order Form</h3>
     <%= order_form.hidden_field :user_id %>
     <h3>select task </h3>
-    <%= fields_for :task do |task_form| %>
-        <%= task_form.collection_select(:task_id, Task.all, :id, :name) %>
+    <%= fields_for @order.tasks.build do |task_form| %>
+        <%= task_form.collection_select(:task, Task.all, :id, :name) %>
     <% end %><br>
     <h3>select site </h3>
-    <%= fields_for :site do |site_form| %>
+    <%= fields_for @order.sites.build do |site_form| %>
         <%= site_form.collection_select(:site_id, Site.all, :id, :name) %>
     <% end %><br>
 <p><%= order_form.submit "Create"%></p>

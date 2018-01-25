@@ -52,8 +52,9 @@ class TasksController < ApplicationController
       authorize @post
     # perform an update
     end
-
+    private 
+    
     def task_params
         params.require(:task).permit(:name, :user_id)
-      end
+    end
 end
