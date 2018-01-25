@@ -3,17 +3,19 @@
     <%= order_form.hidden_field :user_id %>
     <h3>select task </h3>
     <%= fields_for @order.task do |task_form| %>
-        <%= task_form.collection_select(:task) %>
+        <%= task_form.select(:task, options_for_select([['task1', 1], ['task2', 2]])) %>
     <% end %><br>
     <h3>select site </h3>
     <%= fields_for @order.site do |site_form| %>
-        <%= site_form.collection_select(:site) %>
+        <%= site_form.select(:site, options_for_select([['site1', 1], ['site2', 2]])) %>
     <% end %><br>
+    <h3>select deadline </h3>
     <%= fields_for @order.deadline do |deadline_form| %>
-        <%= site_form.collection_select(:deadline) %>
+        <%= deadline_form.select(:deadline, options_for_select([['deadline1', 1], ['deadline2', 2]])) %>
     <% end %><br>
+    <h3>select frequence </h3>
     <%= fields_for @order.frequency do |frequency_form| %>
-        <%= site_form.collection_select(:frequency) %>
+        <%= frequency_form.select(:frequency, options_for_select([['freqs1', 1], ['freqs2', 2]])) %>
     <% end %><br>
 <p><%= order_form.submit "Create"%></p>
 <% end %>
