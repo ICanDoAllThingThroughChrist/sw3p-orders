@@ -1,23 +1,23 @@
-<%= form_for @order, url: {action: "create"} do |order_form| %>
+<%= form_for @order, url: {action: "create"} do |f| %>
 <h3>Order Form</h3>
-    <%= order_form.hidden_field :user_id %>
-    <h3>select task </h3>
-    <%= fields_for @order.task do |task_form| %>
-        <%= task_form.select(:task, options_for_select([['task1', 1], ['task2', 2]])) %>
-    <% end %><br>
+    <%= f.hidden_field :user_id %>
+    <div>
+        <%= f.label :task %>
+        <div>
+            <%= f.select :task, ['task1','task2'] %>
+        </div>
+    </div>
     <h3>select site </h3>
-    <%= fields_for @order.site do |site_form| %>
-        <%= site_form.select(:site, options_for_select([['site1', 1], ['site2', 2]])) %>
-    <% end %><br>
+    <%= f.select :site, ['site1', 'site2'] %>
     <h3>select deadline </h3>
-    <%= fields_for @order.deadline do |deadline_form| %>
-        <%= deadline_form.select(:deadline, options_for_select([['deadline1', 1], ['deadline2', 2]])) %>
+    <%= f.select :deadline, ['deadline1', 'deadline2'] %>
+    <h3>select frequency </h3>
+    <%= f.select :frequency, ['freqs1', 'freqs2'] %>
+    <h3>comments </h3>
+    <%= f.fields_for :comments do |comment_form| %>
+       Comment : <%= comment_form.text_field :comment %>
     <% end %><br>
-    <h3>select frequence </h3>
-    <%= fields_for @order.frequency do |frequency_form| %>
-        <%= frequency_form.select(:frequency, options_for_select([['freqs1', 1], ['freqs2', 2]])) %>
-    <% end %><br>
-<p><%= order_form.submit "Create"%></p>
+<p><%= f.submit "Create"%></p>
 <% end %>
 <%#http://guides.rubyonrails.org/form_helpers.html%>
 <%#https://learn.co/tracks/full-stack-web-development-v3/rails/associations-and-rails/basic-nested-forms%> 

@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     def new 
         @user = User.find(params[:user_id])
         @order = @user.orders.build
+        @order.comments.build
         # @order.tasks.build(name: '')
         # @order.sites.build(name: '')
     end 
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
         #raise.params.inspect
         #https://agilewarrior.wordpress.com/2011/10/22/rails-drop-downs/
         binding.pry
-        @order << Order.new(order_params) 
+        @order = Order.new(order_params) 
         binding.pry
         if @order.save
             redirect_to user_orders_path(@order)
@@ -25,7 +26,7 @@ class OrdersController < ApplicationController
     
     private 
     def order_params
-        params.require(:order).permit(:user_id, :task, :site, :deadline, :frequency, :comments)
+        params.require(:order).permit(:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
