@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
         @user = current_user
         @order = @user.orders.build
         @order.comments.build
-        @tasks = @order.tasks.build
+        #@order.tasks.build
         #https://github.com/learn-co-curriculum/expedition-maker-2017/blob/solution-part-two/app/controllers/expeditions_controller.rb
         # @order.tasks.build(name: '')
         # @order.sites.build(name: '')

@@ -9,8 +9,6 @@
     <%= f.select :deadline, ['deadline1', 'deadline2'] %>
     <h3>select frequency </h3>
     <%= f.select :frequency, ['freqs1', 'freqs2'] %>
-    <h3>tasks </h3> 
-    <%= f.collection_select(:task_id, Task.all, :id, :name)%>
     <h3>comments </h3>
     <%= f.fields_for :comments do |comment_form| %>
        Comment : <%= comment_form.text_field :comment %>
