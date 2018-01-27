@@ -16,7 +16,7 @@
       Logged in as <%= current_user.email %>.<br>
       <%= link_to link_to "Log out", logout_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign Up", new_user_path %> or <br>
+      <%= link_to "Sign Up", '/signup' %> or <br>
       <%= link_to "Log In", '/login' %> or <br>
       <%= link_to link_to "Log out", logout_path, method: :delete %>
     <% end %>

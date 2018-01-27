@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get  '/signup',     to: 'users#new'
   post '/signup',     to: 'users#create'
   get    '/login',    to: 'sessions#new'  #cRud = 'GET login to READ sessions#new form & controller'
-  post   '/login',    to: 'sessions#create'#Crud = 'Post login page to Create sessions#create controller'
+  post   '/login',    to: 'sessions#create'#Crud = 'Post data from login page to Create new record'
   delete '/logout',   to: 'sessions#destroy'
   resources :orders, only: [:index, :new, :create] 
   resources :sites, only: [:index, :new, :create]

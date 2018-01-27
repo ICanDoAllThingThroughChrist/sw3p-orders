@@ -1,9 +1,6 @@
-<h1>Hi <%= @user.name %></h1>
-<% if session[:user_id] %>
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
+<h2>Hi <%= @user.name %> please create your order</h2> 
+<% if current_user %>
+  <%= link_to 'New Order', new_order_path %>
 <% else %>
   <%= link_to 'New Site Task', sites_path %>
 <% end %>
