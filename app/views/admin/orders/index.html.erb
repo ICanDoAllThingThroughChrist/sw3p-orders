@@ -1,0 +1,17 @@
+<% if !params[:user_id].blank? %>
+  <% @orders = Order.where(user: params[:user_id]) %>
+<% elsif !params[:date].blank? %>
+  <% if params[:date] == "Today" %>
+    <% @orders = Order.where("created_at >=?", Time.zone.today.beginning_of_day) %>
+  <% else %>
+    <% @orders = Order.where("created_at <?", Time.zone.today.beginning_of_day) %>
+  <% end %>
+<% end %>
+<div>
+  <h3>Filter orders:</h3>
+  <%= form_tag("/orders", method: "get") do %>
+    <%= select_tag "user", options_from_collection_for_select(@users, "id", "name"), include_blank: true %>
+    <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>

@@ -1,18 +1,16 @@
 <%= form_for @order, url: {action: "create"} do |f| %>
 <h3>Order Form</h3>
     <%= f.hidden_field :user_id %>
-    <div>
-        <%= f.label :task %>
-        <div>
-            <%= f.select :task, ['task1','task2'] %>
-        </div>
-    </div>
+    <h3>select task </h3>
+    <%= f.select :task, ['task1', 'task2'] %>
     <h3>select site </h3>
     <%= f.select :site, ['site1', 'site2'] %>
     <h3>select deadline </h3>
     <%= f.select :deadline, ['deadline1', 'deadline2'] %>
     <h3>select frequency </h3>
     <%= f.select :frequency, ['freqs1', 'freqs2'] %>
+    <h3>tasks </h3> 
+    <%= f.collection_select(:task_id, Task.all, :id, :name)%>
     <h3>comments </h3>
     <%= f.fields_for :comments do |comment_form| %>
        Comment : <%= comment_form.text_field :comment %>

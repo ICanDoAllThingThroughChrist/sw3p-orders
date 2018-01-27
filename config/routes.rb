@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users, only: [:index, :new, :create] do 
-    resources :orders, only: [:index, :new, :create]
-  end
+  resources :orders, only: [:index, :new, :create] 
   resources :sites, only: [:index, :new, :create]
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'
