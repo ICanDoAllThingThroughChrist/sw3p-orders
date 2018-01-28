@@ -1,5 +1,5 @@
 class Site < ApplicationRecord
-    belongs_to :order
+    has_many :orders
     has_many :sitetasks
     has_many :tasks, through: :sitetasks
     accepts_nested_attributes_for :tasks

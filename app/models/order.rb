@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
     belongs_to :user
+    belongs_to :site
     has_many :comments, inverse_of: :order 
     #has_one :task, inverse_of: :order
     #accepts_nested_attributes_for :comments

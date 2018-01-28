@@ -5,6 +5,11 @@ class OrdersController < ApplicationController
         @user = current_user
         @order = @user.orders.build
         @order.comments.build
+        @order.build_site
+        @sites = Site.all
+        #@author = @book.reload_author
+        #http://guides.rubyonrails.org/association_basics.html#belongs-to-association-reference
+        #@order._build.site
         #@order.tasks.build
         #https://github.com/learn-co-curriculum/expedition-maker-2017/blob/solution-part-two/app/controllers/expeditions_controller.rb
         # @order.tasks.build(name: '')
