@@ -36,15 +36,26 @@ table#t01 th {
   <tr>
     <th>Task</th>
     <th>Frequency</th> 
-    <th>Site</th>
+    <th>Site Name</th>
     <th>Comment</th>
   </tr>
   <tr><% @orders.each do |order| %></tr>
     <td><%= order.task %></td>
     <td><%= order.frequency %></td>
-    <td><%= order.site %></td>
-    <% order.comments.each do |comment| %>
-        <td><%= comment.comment %></td>
+    <%# binding.pry  %>
+        <% if order.site != nil %>
+            <td><%= order.site.name %></td>
+        <% else %>
+            <td><%= "'no site selected'" %></td>
+        <% end %></td>
+    <%# binding.pry %>
+        <% if order.comments.present? %>
+            <% order.comments.each do |comment| %>
+                    <td><%= comment.comment %></td>
+                <% end %>
+                <%# binding.pry %>
+        <% else %>
+            <td><%= 'no comment' %></td>
         <% end %>
     <% end %>
   </table>

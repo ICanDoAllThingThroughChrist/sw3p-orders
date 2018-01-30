@@ -14,7 +14,7 @@ class Order < ApplicationRecord
     #     task_attributes.each do |key, value|
     #         if !value[:name].empty?
     #             if new_task = Task.find_by(name: value[:name])
-    #                 self.tasks << new_task 
+    #                 self.taskcomms << new_task 
     #             else
     #                 self.tasks.build(name: value[:name])
     #             end 
@@ -29,7 +29,7 @@ class Order < ApplicationRecord
                 if new_comment = Comment.find_by(comment: value[:comment])
                     self.comments << new_comment 
                 else
-                    self.comments.build(name: value[:comment])
+                    self.comments.build(comment: value[:comment])
                 end 
             end 
         end

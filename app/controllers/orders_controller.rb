@@ -5,8 +5,9 @@ class OrdersController < ApplicationController
         @user = current_user
         @order = @user.orders.build
         @order.comments.build
-        @order.build_site
-        @sites = Site.all
+        @order.build_site#@book.reload_author
+        @sites = Site.all 
+        @nocomment = "no comment"
         #@author = @book.reload_author
         #http://guides.rubyonrails.org/association_basics.html#belongs-to-association-reference
         #@order._build.site
@@ -20,9 +21,9 @@ class OrdersController < ApplicationController
         #binding.pry
         #raise.params.inspect
         #https://agilewarrior.wordpress.com/2011/10/22/rails-drop-downs/
-        #binding.pry
+        binding.pry
         @order = Order.new(order_params) 
-        #binding.pry
+        binding.pry
         if @order.save
             binding.pry
             redirect_to orders_path(@order)
@@ -37,7 +38,7 @@ class OrdersController < ApplicationController
     end 
     private 
     def order_params
-        params.require(:order).permit(:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment], :tasks_attributes => [:name])
+        params.require(:order).permit(:site_id,:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
