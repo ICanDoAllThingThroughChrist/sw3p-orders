@@ -54,13 +54,16 @@ class OrdersController < ApplicationController
     end 
 
     def edit
-        binding.pry
+       if params[:order_id]
+        @order = Order.find(params[:order_id])
+       else params[:id]
         @order = Order.find(params[:id])
+       end 
     end 
 
     private 
     def order_params
-        params.require(:order).permit(:site_id,:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])
+        params.require(:order).permit(:order_id, :site_id,:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
