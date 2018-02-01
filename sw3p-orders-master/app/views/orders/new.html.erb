@@ -2,6 +2,7 @@
 <%= form_for @order, url: {action: "create"} do |f| %>
 <h3>Order Form</h3>
     <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :site_id %>
     <h3>select task </h3>
     <%= f.select :task, ['task1', 'task2'] %>
     <h3>select deadline </h3>
