@@ -1,3 +1,4 @@
+<h2><%= "Order for #{@site.name}" %></h2>
 <%= form_for @order, url: {action: "create"} do |f| %>
 <h3>Order Form</h3>
     <%= f.hidden_field :user_id %>
@@ -11,8 +12,7 @@
     <%= f.fields_for :comments do |comment_form| %>
        Comment : <%= comment_form.text_field :comment %>
     <% end %><br>
-    <h3>Sites </h3>
-    <%= f.collection_select(:site_id, Site.all, :id, :name) %><br>
+    <%#= f.collection_select(:site_id, Site.all, :id, :name) %><br>
 <p><%= f.submit "Create"%></p>
 <% end %>
 <%#http://guides.rubyonrails.org/form_helpers.html%>

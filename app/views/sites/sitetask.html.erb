@@ -1,0 +1,15 @@
+<h1> all sites </h1>
+<%#if current_user %>
+    <% @site.each do |site| %>
+    <h3>Name: <%=site.name%> </h3>
+        <% if site.tasks.count > 0 %>
+                    <p>Required Task</p>
+                    <ul>
+                        <% site.tasks.each do |task| %>
+                            <li><%= task.name %></li>
+                        <% end %>
+                    </ul>
+        <% end %>
+    <% end %>
+<%# end %>
+<%= link_to "existing site to create new order", site_path %>

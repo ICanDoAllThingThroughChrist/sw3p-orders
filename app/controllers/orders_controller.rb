@@ -2,11 +2,16 @@ class OrdersController < ApplicationController
     #helper_method :params
    
     def new 
+        @site = Site.find(params[:site_id])
+        #binding.pry
         @user = current_user
+        #binding.pry
         @order = @user.orders.build
         @order.comments.build
-        @order.build_site#@book.reload_author
-        @sites = Site.all 
+        #@book.reload_author is used where collection of authors where to be selected under books#new form
+        @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
+        binding.pry
+        #@sites = Site.all 
         @nocomment = "no comment"
         #@author = @book.reload_author
         #http://guides.rubyonrails.org/association_basics.html#belongs-to-association-reference
@@ -28,14 +33,26 @@ class OrdersController < ApplicationController
             binding.pry
             redirect_to orders_path(@order)
         else
-            render new_user_order_path 
+            flash.now[:error] = "Could not save order"
+            render new_site_order_path 
         end
     end 
+
     def index 
         binding.pry
         @user = current_user.id
         @orders = Order.by_author(current_user.id)   
     end 
+
+    def show 
+        if current_user
+            @order = Order.find(params[:id])
+        else
+            flash[:notice] = "Requested Order does not belong to current user"#http://guides.rubyonrails.org/action_controller_overview.html
+            redirect_to user_orders_path 
+        end 
+    end 
+
     private 
     def order_params
         params.require(:order).permit(:site_id,:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])

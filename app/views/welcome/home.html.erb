@@ -1,6 +1,6 @@
-<h2>Hi <%= @user.name %> please create your order</h2> 
+<h3>Hi <%= @user.name %>, please select your site</h3> 
 <% if current_user %>
-  <%= link_to 'New Order', new_order_path %>
+  <%= link_to 'Sites List', sites_path %>
 <% else %>
-  <%= link_to 'New Site Task', sites_path %>
+  <%= link_to 'Site Orders', site_orders %>
 <% end %>

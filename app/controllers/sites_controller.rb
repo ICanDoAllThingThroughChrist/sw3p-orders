@@ -19,20 +19,25 @@ class SitesController < ApplicationController
             render :new 
         end 
     end
-    def show 
-        @site = Site.find_by(params[:id])
-    end 
 
     def orders
         @site = Site.find_by(params[:id])
         @users = User.all
         @tasks = @site.tasks
     end
+    
+    def show 
+        binding.pry#key to discover find instead of find_by method
+        @site = Site.find(params[:id])#find instead of find_by worked
+    end 
 
+    def sitetask
+        @site = Site.all
+    end 
     private 
     def site_params
         #binding.pry
-        params.require(:site).permit(:name, :task_ids, task_attributes: [:name])
+        params.require(:site).permit(:site_id, :name, :task_ids, task_attributes: [:name])
         # params.require(:expedition).permit(:name, :description, :length, :difficulty, equipment: [:name])
     end 
 
