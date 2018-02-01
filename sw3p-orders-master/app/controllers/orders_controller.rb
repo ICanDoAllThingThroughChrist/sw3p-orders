@@ -44,9 +44,11 @@ class OrdersController < ApplicationController
         @orders = Order.by_author(current_user.id)   
     end 
 
-    def show 
+    def show
+        binding.pry 
         if current_user
             @order = Order.find(params[:id])
+            binding.pry
         else
             flash[:notice] = "Requested Order does not belong to current user"#http://guides.rubyonrails.org/action_controller_overview.html
             redirect_to user_orders_path 

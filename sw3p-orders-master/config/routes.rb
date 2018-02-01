@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :orders
   end
   post '/sites/:id/orders/:id/edit' => "orders#update"
+  patch '/sites/:id/orders'         => 'orders#update'
   # resources :orders, only: [:edit, :update] 
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'

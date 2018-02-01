@@ -1,2 +1,4 @@
-<h1><%= @order.site.order.id %>
-<p <%= link_to "Edit", edit_site_order_path(@order) %></p>
+<% binding.pry %>
+<h3><%= @order.task %></h3>
+<h3><%= @order.site.name %></h3>
+<p> <%= link_to "Edit", edit_site_order_path(@order) %></p>
