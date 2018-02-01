@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'#Crud = 'Post data from login page to Create new record'
   delete '/logout',   to: 'sessions#destroy'
   resources :sites, only: [:index, :new, :create, :show] do 
-    resources :orders, only: [:index, :new, :create, :edit] 
+    resources :orders
   end
+  post '/sites/:id/orders/:id/edit' => "orders#update"
+  # resources :orders, only: [:edit, :update] 
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'

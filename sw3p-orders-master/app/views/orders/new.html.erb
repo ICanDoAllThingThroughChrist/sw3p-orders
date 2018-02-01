@@ -1,20 +1,2 @@
-<h2><%= "Order for #{@site.name}" %></h2>
-<%= form_for @order, url: {action: "create"} do |f| %>
-<h3>Order Form</h3>
-    <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :site_id %>
-    <h3>select task </h3>
-    <%= f.select :task, ['task1', 'task2'] %>
-    <h3>select deadline </h3>
-    <%= f.select :deadline, ['deadline1', 'deadline2'] %>
-    <h3>select frequency </h3>
-    <%= f.select :frequency, ['freqs1', 'freqs2'] %>
-    <h3>comments </h3>
-    <%= f.fields_for :comments do |comment_form| %>
-       Comment : <%= comment_form.text_field :comment %>
-    <% end %><br>
-    <%#= f.collection_select(:site_id, Site.all, :id, :name) %><br>
-<p><%= f.submit "Create"%></p>
-<% end %>
-<%#http://guides.rubyonrails.org/form_helpers.html%>
-<%#https://learn.co/tracks/full-stack-web-development-v3/rails/associations-and-rails/basic-nested-forms%> 
+<h1> new order </h1>
+<%= render "layouts/form" %>

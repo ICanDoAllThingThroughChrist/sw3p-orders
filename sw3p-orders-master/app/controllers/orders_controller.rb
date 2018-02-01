@@ -54,11 +54,21 @@ class OrdersController < ApplicationController
     end 
 
     def edit
+        binding.pry
        if params[:order_id]
         @order = Order.find(params[:order_id])
+        render :edit
        else params[:id]
         @order = Order.find(params[:id])
        end 
+    end
+    
+    def update
+        if params[:order_id]
+         @order = Order.find(params[:order_id])
+        else params[:id]
+         @order = Order.find(params[:id])
+        end 
     end 
 
     private 

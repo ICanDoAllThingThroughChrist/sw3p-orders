@@ -59,7 +59,7 @@ table#t01 th {
                     <td><%= 'no comment' %></td>
         <% end %>
         <% binding.pry %>
-        <td><%= link_to 'edit order', edit_site_order_url(order.site, order), method: :edit %>
+        <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
     <% end %>
   </table>
 </body>
