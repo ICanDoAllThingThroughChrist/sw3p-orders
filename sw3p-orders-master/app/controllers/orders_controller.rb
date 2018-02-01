@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
         @site = Site.find(params[:site_id])
         #binding.pry
         @user = current_user
-        #binding.pry
+        binding.pry
         @order = @user.orders.build
         @order.comments.build
         #@book.reload_author is used where collection of authors where to be selected under books#new form
@@ -51,6 +51,11 @@ class OrdersController < ApplicationController
             flash[:notice] = "Requested Order does not belong to current user"#http://guides.rubyonrails.org/action_controller_overview.html
             redirect_to user_orders_path 
         end 
+    end 
+
+    def edit
+        binding.pry
+        @order = Order.find(params[:id])
     end 
 
     private 

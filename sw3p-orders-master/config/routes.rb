@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'#Crud = 'Post data from login page to Create new record'
   delete '/logout',   to: 'sessions#destroy'
   resources :sites, only: [:index, :new, :create, :show] do 
-    resources :orders, only: [:index, :new, :create] 
+    resources :orders, only: [:index, :new, :create, :edit] 
   end
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'

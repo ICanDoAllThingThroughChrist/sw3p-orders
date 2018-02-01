@@ -38,6 +38,7 @@ table#t01 th {
     <th>Frequency</th> 
     <th>Site Name</th>
     <th>Comment</th>
+    <th>edit order</th>
   </tr>
   <tr><% @orders.each do |order| %></tr>
     <td><%= order.task %></td>
@@ -55,8 +56,10 @@ table#t01 th {
                 <% end %>
                 <%# binding.pry %>
         <% else %>
-            <td><%= 'no comment' %></td>
+                    <td><%= 'no comment' %></td>
         <% end %>
+        <% binding.pry %>
+        <td><%= link_to 'edit order', edit_site_order_url(:order => {:order_id => order.id}) %>
     <% end %>
   </table>
 </body>
