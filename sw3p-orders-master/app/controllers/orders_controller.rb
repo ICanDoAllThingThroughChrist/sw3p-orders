@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
         binding.pry
         if @order.save
             binding.pry
-            redirect_to orders_path(@order)
+            redirect_to site_orders_url
         else
             flash.now[:error] = "Could not save order"
             render new_site_order_path 
