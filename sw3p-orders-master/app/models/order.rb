@@ -3,7 +3,7 @@ class Order < ApplicationRecord
     belongs_to :site
     has_many :comments, inverse_of: :order 
     #has_one :task, inverse_of: :order
-    #accepts_nested_attributes_for :comments
+    accepts_nested_attributes_for :comments
     #has_many :tasks, inverse_of: :order
     #accepts_nested_attributes_for :tasks 
     def self.by_author(user_id)
@@ -23,7 +23,7 @@ class Order < ApplicationRecord
     # end 
     def comments_attributes=(comment_attributes)
         binding.pry
-        comment_attributes.each do |key, value|
+        comment_attributes.each do |key, value|#key, value hash during Create Order, BUT fails for comment_attributes is a string
         binding.pry
             if !value[:comment].empty?
                 if new_comment = Comment.find_by(comment: value[:comment])

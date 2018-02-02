@@ -10,8 +10,12 @@
     <%= f.label :frequency %><br>
     <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
     <%= f.label :comment %><br>
-    <%= f.fields_for :comments do |comment_form| %>
-        Comment : <%= comment_form.text_field :comment %><br>
+    <% binding.pry %>
+    <%#b/c string value of comments during update, this field'll not appear in order#update call%>
+    <%= f.fields_for :comments, @order.comments do |c| %>
+        <% binding.pry %>
+           <%= c.text_field :comment %><br>
      <% end %><br>
-     <p><%= f.submit "Edit"%></p><br>
+     <% binding.pry %>
+     <p><%= f.submit "Edit or Create Order"%></p><br>
 <% end %>

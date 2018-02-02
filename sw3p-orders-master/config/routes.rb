@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :sites, only: [:index, :new, :create, :show] do 
     resources :orders
   end
+  # resources :order, only: [:create, :update] do 
+  #   resources :comments
+  # end
   post '/sites/:id/orders/:id/edit' => "orders#update"
   patch '/sites/:id/orders'         => 'orders#update'
   # resources :orders, only: [:edit, :update] 

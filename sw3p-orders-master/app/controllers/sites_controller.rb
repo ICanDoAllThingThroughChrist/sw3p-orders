@@ -29,6 +29,8 @@ class SitesController < ApplicationController
     def show 
         binding.pry#key to discover find instead of find_by method
         @site = Site.find(params[:id])#find instead of find_by worked
+        binding.pry
+        @task = @site.orders
     end 
 
     def sitetask

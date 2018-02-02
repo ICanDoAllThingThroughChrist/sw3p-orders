@@ -41,13 +41,15 @@ class OrdersController < ApplicationController
     def index 
         binding.pry
         @user = current_user.id
-        @orders = Order.by_author(current_user.id)   
+        @orders = Order.by_author(current_user.id) 
+        render :index  
     end 
 
     def show
         binding.pry 
         if current_user
             @order = Order.find(params[:id])
+            render :show#call show page
             binding.pry
         else
             flash[:notice] = "Requested Order does not belong to current user"#http://guides.rubyonrails.org/action_controller_overview.html
@@ -59,23 +61,30 @@ class OrdersController < ApplicationController
         binding.pry
        if params[:order_id]
         @order = Order.find(params[:order_id])
-        render :edit
+        #render :edit "app did not hit this line after order edit completion, trying update"
+        binding.pry
        else params[:id]
         @order = Order.find(params[:id])
        end 
     end
     
     def update
+         binding.pry
         if params[:order_id]
+         binding.pry
          @order = Order.find(params[:order_id])
+         @order.save
         else params[:id]
+         binding.pry
          @order = Order.find(params[:id])
+         binding.pry
+         @order.save
         end 
     end 
 
     private 
     def order_params
-        params.require(:order).permit(:order_id, :site_id,:user_id, :task, :site, :deadline, :frequency, :comments_attributes => [:comment])
+        params.require(:order).permit(:order_id, :site_id,:user_id, :task, :site, :deadline, :frequency,:comments_attributes => [:id], :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
