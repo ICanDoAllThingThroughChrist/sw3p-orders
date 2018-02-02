@@ -5,16 +5,16 @@ class OrdersController < ApplicationController
         @site = Site.find(params[:site_id])
         #binding.pry
         @user = current_user
-        binding.pry
+        #binding.pry
         @order = @user.orders.build
-        @order.task_build
-        @order.frequency_build
-        @order.deadline_build 
-        @order.status_build
+        @order.build_task
+        @order.build_frequency
+        @order.build_deadline
+        @order.build_status
         @order.comments.build
         #@book.reload_author is used where collection of authors where to be selected under books#new form
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
-        binding.pry
+        #binding.pry
         #@sites = Site.all 
         @nocomment = "no comment"
         #@author = @book.reload_author
@@ -99,7 +99,7 @@ class OrdersController < ApplicationController
 
     private 
     def order_params
-        params.require(:order).permit(:order_id, :site_id,:user_id, :task, :site, :deadline, :frequency,:comments_attributes => [:id], :comments_attributes => [:comment])
+        params.require(:order).permit(:site_id, :user_id, :task_id, :status_id, :deadline_id, :frequency_id, :comments_attributes => [:id], :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
