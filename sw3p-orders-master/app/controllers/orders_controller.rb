@@ -61,6 +61,7 @@ class OrdersController < ApplicationController
         binding.pry
        if params[:order_id]
         @order = Order.find(params[:order_id])
+        @order.comments.build unless not @order.comments.empty?
         #render :edit "app did not hit this line after order edit completion, trying update"
         binding.pry
        else params[:id]
@@ -78,6 +79,7 @@ class OrdersController < ApplicationController
          binding.pry
          @order = Order.find(params[:id])
          binding.pry
+         #@order.comments.build if !@order.comments.empty? #this builds a separate column/row cell in the row, i.e. failed
          @order.save
         end 
     end 

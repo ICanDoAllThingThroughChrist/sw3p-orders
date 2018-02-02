@@ -1,3 +1,23 @@
 <h1> edit order </h1>
-<%= render "layouts/form" %>
+<%= render "layouts/errors", :object => @order %>
+    
+<%= form_for @order, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :site_id %> 
+    <%= f.label :task %><br>
+    <%= f.select :task, ['task1', 'task2'] %><br>
+    <%= f.label :deadline %><br>
+    <%= f.select :deadline, ['deadline1', 'deadline2'] %> <br>
+    <%= f.label :frequency %><br>
+    <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+    <%= f.label :comment %><br>
+    <% binding.pry %>
+    <%# during edit call, must call .build, for the form text field to show up %>
+    <%= f.fields_for :comments, @order.comments.build do |c| %>
+        <% binding.pry %>
+           <%= c.text_field :comment %><br>
+     <% end %><br>
+     <% binding.pry %>
+     <p><%= f.submit "Edit or Create Order"%></p><br>
+<% end %>
 
