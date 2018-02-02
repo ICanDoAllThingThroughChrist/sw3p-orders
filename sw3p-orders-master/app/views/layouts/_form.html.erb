@@ -10,12 +10,28 @@
     <%= f.label :frequency %><br>
     <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
     <%= f.label :comment %><br>
-    <% binding.pry %>
+    <%# binding.pry %>
     <%#b/c string value of comments during update, this field'll not appear in order#update call%>
+    <%= f.fields_for :task, @order.build_task do |c| %>
+        <%# binding.pry %>
+           <%= c.collection_select(:order, :task_id, Task.all, :id, :name)  %><br>
+     <% end %><br>
+     <%= f.fields_for :frequency, @order.build_frequency do |c| %>
+        <%# binding.pry %>
+           <%= c.collection_select(:order, :frequency_id, Frequency.all, :id, :name) %><br>
+     <% end %><br>
+     <%= f.fields_for :deadline, @order.build_deadline do |c| %>
+        <%# binding.pry %>
+           <%= c.collection_select(:order, :deadline_id, Deadline.all, :id, :name) %><br>
+     <% end %><br>
+     <%= f.fields_for :status, @order.build_status do |c| %>
+        <%# binding.pry %>
+           <%= c.collection_select(:order, :status_id, Status.all, :id, :name) %><br>
+     <% end %><br>    
     <%= f.fields_for :comments, @order.comments do |c| %>
-        <% binding.pry %>
+        <%# binding.pry %>
            <%= c.text_field :comment %><br>
      <% end %><br>
-     <% binding.pry %>
+     <%# binding.pry %>
      <p><%= f.submit "Edit or Create Order"%></p><br>
 <% end %>

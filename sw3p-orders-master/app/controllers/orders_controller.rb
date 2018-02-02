@@ -7,6 +7,10 @@ class OrdersController < ApplicationController
         @user = current_user
         binding.pry
         @order = @user.orders.build
+        @order.task_build
+        @order.frequency_build
+        @order.deadline_build 
+        @order.status_build
         @order.comments.build
         #@book.reload_author is used where collection of authors where to be selected under books#new form
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
@@ -78,9 +82,18 @@ class OrdersController < ApplicationController
         else params[:id]
          binding.pry
          @order = Order.find(params[:id])
+        #  c = {"0" => order_params["comments_attributes"]["0"]["comment"]}
+        #  @order.comments.each do |c|
+        #     binding.pry
+        #     c.comment = order_params["comments_attributes"]["0"]["comment"]
+        #  end 
+         #@order.comments.build
          binding.pry
-         #@order.comments.build if !@order.comments.empty? #this builds a separate column/row cell in the row, i.e. failed
-         @order.save
+            # if !@order.comments.empty?
+            #     @order.comments.build(order_params)
+                #@order.comments.build if !@order.comments.empty? #this builds a separate column/row cell in the row, i.e. failed
+            # end
+            @order.save
         end 
     end 
 

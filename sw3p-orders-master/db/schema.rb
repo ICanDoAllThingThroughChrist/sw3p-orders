@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126174105) do
+ActiveRecord::Schema.define(version: 20180202204916) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
     t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deadlines", force: :cascade do |t|
+    t.string "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "frequencys", force: :cascade do |t|
+    t.string "frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +50,9 @@ ActiveRecord::Schema.define(version: 20180126174105) do
     t.datetime "firstupdate"
     t.string "firstupdatecomment"
     t.integer "comment_id"
+    t.integer "status_id"
+    t.integer "deadline_id"
+    t.integer "frequency_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -53,6 +68,12 @@ ActiveRecord::Schema.define(version: 20180126174105) do
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
     t.integer "user_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
