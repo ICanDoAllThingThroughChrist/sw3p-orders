@@ -1,6 +1,2 @@
 <h3>Hi <%= @user.name %>, please select your site</h3> 
-<% if current_user %>
-  <%= link_to 'Sites List', sites_path %>
-<% else %>
-  <%= link_to 'Site Orders', site_orders %>
-<% end %>
+<%= link_to 'Sites List', sites_path %>
