@@ -3,32 +3,31 @@
 <%= form_for @order, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :site_id %> 
-   
-    <%#= f.select :task, ['task1', 'task2'] %><br>
-    <%#= f.select :deadline, ['deadline1', 'deadline2'] %> <br>
-    <%#= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+    <%= f.label :task %><br>
+    <%= f.select :task, ['task1', 'task2'] %><br>
+    <%= f.label :deadline %><br>
+    <%= f.select :deadline, ['deadline1', 'deadline2'] %> <br>
+    <%= f.label :frequency %><br>
+    <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
     <%# binding.pry %>
     <%#b/c string value of comments during update, this field'll not appear in order#update call%>
-    <%= f.label :task %><br>
-    <%= f.fields_for :task do |c| %>
+    <%#= f.fields_for :task do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select(:task_id, Task.all, :id, :name, { :prompt => 'Select 1' } ) %><br>
-     <% end %><br>
-      <%= f.label :frequency %><br>
-     <%= f.fields_for :frequency do |c| %>
+           <%#= c.collection_select(:task_id, Task.all, :id, :name, { :prompt => 'Select 1' } ) %>
+     <%# end %>
+     <%#= f.fields_for :frequency do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select(:frequency_id, Frequency.all, :id, :name, { :prompt => 'Select 1' } ) %><br>
-     <% end %><br>
-      <%= f.label :deadline %><br>
-     <%= f.fields_for :deadline do |c| %>
+           <%#= c.collection_select(:frequency_id, Frequency.all, :id, :frequency, { :prompt => 'Select 1' } ) %>
+     <%# end %>
+     <%#= f.fields_for :deadline do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select(:deadline_id, Deadline.all, :id, :name, { :prompt => 'Select 1' }) %><br>
-     <% end %><br>
-     <%= f.label :status %><br>
-     <%= f.fields_for :status do |c| %>
+           <%#= c.collection_select(:deadline_id, Deadline.all, :id, :name, { :prompt => 'Select 1' }) %>
+     <%# end %>
+     <%#= f.label :status %>
+     <%#= f.fields_for :status do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select(:status_id, Status.all, :id, :name, { :prompt => 'Select 1' }) %><br>
-     <% end %><br> 
+           <%#= c.collection_select(:status_id, Status.all, :id, :status, { :prompt => 'Select 1' }) %>
+     <%# end %>
      <%= f.label :comment %><br>   
     <%= f.fields_for :comments, @order.comments do |c| %>
         <%# binding.pry %>

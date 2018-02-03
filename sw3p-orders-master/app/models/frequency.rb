@@ -1,4 +1,4 @@
 class Frequency < ApplicationRecord
-    has_many :orders
+    belongs_to :orders, :inverse_of => :frequencies
 end
 

@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    has_many :orders
+    belongs_to :orders, :inverse_of => :tasks
     has_many :sitetasks
     has_many :sites, through: :sitetasks 
     #belongs_to :user

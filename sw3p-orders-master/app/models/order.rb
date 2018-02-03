@@ -1,10 +1,14 @@
 class Order < ApplicationRecord
     belongs_to :user
     belongs_to :site
-    belongs_to :task
-    belongs_to :frequency
-    belongs_to :deadline
-    belongs_to :status
+    # has_one :task
+    # accepts_nested_attributes_for :task
+    # has_one :frequency
+    # accepts_nested_attributes_for :frequency
+    # has_one :deadline
+    # accepts_nested_attributes_for :deadline
+    # has_one :status
+    # accepts_nested_attributes_for :status
     has_many :comments, inverse_of: :order 
     #has_one :task, inverse_of: :order
     accepts_nested_attributes_for :comments#, allow_destroy: true

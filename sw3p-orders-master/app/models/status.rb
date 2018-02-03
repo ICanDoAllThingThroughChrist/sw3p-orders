@@ -1,4 +1,4 @@
 class Status < ApplicationRecord
-    has_many :orders
+    belongs_to :orders,:inverse_of => :statuses
 end
 

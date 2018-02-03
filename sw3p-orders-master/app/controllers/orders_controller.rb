@@ -3,14 +3,14 @@ class OrdersController < ApplicationController
    
     def new 
         @site = Site.find(params[:site_id])
-        #binding.pry
+        #binding.prqy
         @user = current_user
-        #binding.pry
+        binding.pry
         @order = @user.orders.build
-        @order.build_task
-        @order.build_frequency
-        @order.build_deadline
-        @order.build_status
+        # @order.build_task
+        # @order.build_frequency
+        # @order.build_deadline
+        # @order.build_status
         @order.comments.build
         #@book.reload_author is used where collection of authors where to be selected under books#new form
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
         #binding.pry
         #raise.params.inspect
         #https://agilewarrior.wordpress.com/2011/10/22/rails-drop-downs/
-        binding.pry
+        #binding.pry
         @order = Order.new(order_params) 
         binding.pry
         if @order.save
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
             redirect_to site_orders_url
         else
             flash.now[:error] = "Could not save order"
-            render new_site_order_path 
+            render site_orders_url 
         end
     end 
 
@@ -99,7 +99,7 @@ class OrdersController < ApplicationController
 
     private 
     def order_params
-        params.require(:order).permit(:site_id, :user_id, :task_id, :status_id, :deadline_id, :frequency_id, :comments_attributes => [:id], :comments_attributes => [:comment])
+        params.require(:order).permit(:site_id, :user_id, :task_attributes => [:task_id], :status_attributes => [:status_id], :deadline_attributes => [:deadline_id], :frequency_attributes => [:frequency_id], :comments_attributes => [:id], :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
