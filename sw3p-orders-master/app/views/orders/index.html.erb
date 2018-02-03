@@ -41,8 +41,8 @@ table#t01 th {
     <th>edit order</th>
   </tr>
   <tr><% @orders.each do |order| %></tr>
-    <td><%= order.task %></td>
-    <td><%= order.frequency %></td>
+    <td><%= order.task.name %></td>
+    <td><%= order.frequencie.frequency %></td>
     <%# binding.pry  %>
         <% if order.site != nil %>
             <td><%= order.site.name %></td>

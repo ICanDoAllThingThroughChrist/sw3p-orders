@@ -1,4 +1,4 @@
 class Deadline < ApplicationRecord
-    belongs_to :orders, :inverse_of => :deadlines
+    belongs_to :order, :inverse_of => :deadline
 end
 
