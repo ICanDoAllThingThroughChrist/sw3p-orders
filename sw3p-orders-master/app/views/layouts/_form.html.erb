@@ -3,19 +3,19 @@
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :site_id %> 
     <%= f.label :task %><br>
-    <%= f.select :task, ['task1', 'task2'] %>
+    <%#= f.select :task, ['task1', 'task2'] %>
     <%#= f.fields_for :task, @order.task do |c| %>
-        <%# binding.pry %>
+        <% #binding.pry %>
            <%#= f.collection_select :task_id, Task.all, :id, :name %>
      <%# end %>
      <%= f.label :frequency %><br>
-     <%= f.select :frequency, ['freqs1', 'freqs2'] %>
-     <%#= f.fields_for :frequencie, @order.frequency do |c| %>
+     <%#= f.select :frequency, ['freqs1', 'freqs2'] %>
+     <%#= f.fields_for :frequencie, @order.frequencie do |c| %>
         <%# binding.pry %>
            <%#= f.collection_select :frequencie_id, Frequencie.all, :id, :frequency %>
      <%# end %>
      <%= f.label :deadline %><br>
-     <%= f.select :deadline, ['deadline1', 'deadline2'] %>
+     <%#= f.select :deadline, ['deadline1', 'deadline2'] %>
      <%#= f.fields_for :deadline, @order.deadline do |c| %>
         <%# binding.pry %>
            <%#= f.collection_select :deadline_id, Deadline.all, :id, :deadline %>

@@ -7,6 +7,10 @@ class OrdersController < ApplicationController
         @user = current_user
         binding.pry
         @order = @user.orders.build
+        @order.task.build
+        @order.frequencie.build
+        @order.deadline.build
+        @order.statuse.build
         # @order.build_task#https://stackoverflow.com/questions/2472982/using-build-with-a-has-one-association-in-rails
         # @order.build_frequencie
         # @order.build_deadline
@@ -20,7 +24,6 @@ class OrdersController < ApplicationController
         #@author = @book.reload_author
         #http://guides.rubyonrails.org/association_basics.html#belongs-to-association-reference
         #@order._build.site
-        #@order.tasks.build
         #https://github.com/learn-co-curriculum/expedition-maker-2017/blob/solution-part-two/app/controllers/expeditions_controller.rb
         # @order.tasks.build(name: '')
         # @order.sites.build(name: '')
@@ -99,7 +102,12 @@ class OrdersController < ApplicationController
 
     private 
     def order_params
-        params.require(:order).permit(:site_id, :user_id,  :task_attributes => [:id], :task_attributes => [:name], :statuse_attributes => [:id], :statuse_attributes => [:status], :deadline_attributes => [:id], :deadline_attributes => [:deadline], :frequencie_attributes =>  [:id], :frequencie_attributes => [:frequency], :comments_attributes => [:id], :comments_attributes => [:comment])
+        params.require(:order).permit(:site_id, :user_id,  
+        :task_attributes => [:id], :task_attributes => [:name], 
+        :statuse_attributes => [:id], :statuse_attributes => [:status], 
+        :deadline_attributes => [:id], :deadline_attributes => [:deadline], :
+        frequencie_attributes =>  [:id], :frequencie_attributes => [:frequency], 
+        :comments_attributes => [:id], :comments_attributes => [:comment])
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
