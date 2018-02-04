@@ -1,4 +1,4 @@
 class Frequencie < ApplicationRecord
-    belongs_to :order, :inverse_of => :frequencie
+    has_many :order
 end
 

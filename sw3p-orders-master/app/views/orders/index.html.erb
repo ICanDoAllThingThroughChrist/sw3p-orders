@@ -42,7 +42,7 @@ table#t01 th {
   </tr>
   <tr><% @orders.each do |order| %></tr>
     <td><%= order.task.name %></td>
-    <td><%= order.frequencie.frequency %></td>
+    <td><%= order.frequencie.ids %></td>
     <%# binding.pry  %>
         <% if order.site != nil %>
             <td><%= order.site.name %></td>

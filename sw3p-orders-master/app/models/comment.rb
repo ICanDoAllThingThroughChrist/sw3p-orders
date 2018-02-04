@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-    belongs_to :order, :inverse_of => :comments
+    has_many :orders
 end
