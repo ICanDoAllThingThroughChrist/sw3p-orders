@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     # accepts_nested_attributes_for :deadline
     # has_many :statuse, :inverse_of => :order
     # accepts_nested_attributes_for :statuse
-    has_many :comments, inverse_of: :order 
+    has_many :comments
     #has_one :task, inverse_of: :order
     accepts_nested_attributes_for :comments#, allow_destroy: true
     #has_many :tasks, inverse_of: :order

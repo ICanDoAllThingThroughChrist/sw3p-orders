@@ -1,2 +1,4 @@
-<h3><%= @order.task.name %></h3>
+<p><% @order.comments.each do |comment| %></p>
+<h3><%= "#{comment}" %>
+<% end %>
 <p> <%= link_to "Edit or Create", edit_site_order_path(@order) %></p>

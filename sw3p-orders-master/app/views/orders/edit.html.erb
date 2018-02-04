@@ -5,25 +5,28 @@
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :site_id %> 
     <%= f.label :task %><br>
-    <%= f.fields_for :task do |c| %>
+    <%= f.select :task, ['task1', 'task2'] %>
+    <%#= f.fields_for :task do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select :id, Task.all, :id, :name %><br>
-     <% end %>
+           <%#= c.collection_select :id, Task.all, :id, :name %><br>
+     <%# end %>
      <%= f.label :frequency %><br>
-     <%= f.fields_for :frequencie do |c| %>
+     <%= f.select :frequency, ['freqs1', 'freqs2'] %>
+     <%#= f.fields_for :frequencie do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select :id, Frequencie.all, :id, :frequency %><br>
-     <% end %>
+           <%#= c.collection_select :id, Frequencie.all, :id, :frequency %><br>
+     <%# end %>
      <%= f.label :deadline %><br>
-     <%= f.fields_for :deadline do |c| %>
+     <%= f.select :deadline, ['deadline1', 'deadline2'] %>
+     <%#= f.fields_for :deadline do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select :id, Deadline.all, :id, :deadline %><br>
-     <% end %>
+           <%#= c.collection_select :id, Deadline.all, :id, :deadline %><br>
+     <%# end %>
      <%= f.label :status %><br>
-     <%= f.fields_for :statuse do |c| %>
+     <%#= f.fields_for :statuse do |c| %>
         <%# binding.pry %>
-           <%= c.collection_select :id, Statuse.all, :id, :status %><br>
-     <% end %>
+           <%#= c.collection_select :id, Statuse.all, :id, :status %><br>
+     <%# end %>
     <%# during edit call, must call .build, for the form text field to show up %>
     <%#= f.fields_for :comments do |comment_fields| %>
     <%#     Delete: <%= comment_fields.check_box :_destroy %>
