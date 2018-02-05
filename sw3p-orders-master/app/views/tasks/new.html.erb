@@ -1,0 +1,9 @@
+<%= render "layouts/errors", :object => @order %>  
+<%= form_for @order, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :site_id %> 
+    <%= f.label :task %><br>
+    <%= f.fields_for :task, @order.tasks.each do |task| %>
+        <%= task.collection_select(:tasks,Task.all,:id, :name, {:selected => @order.task_ids, :include_blank => true}, {:multiple => true}) %><br>
+        <% end %>
+    <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205024529) do
+ActiveRecord::Schema.define(version: 20180205171106) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -72,9 +72,10 @@ ActiveRecord::Schema.define(version: 20180205024529) do
     t.datetime "firstupdate"
     t.string "firstupdatecomment"
     t.integer "comment_id"
-    t.integer "statuse_id"
+    t.integer "status_id"
     t.integer "deadline_id"
     t.integer "frequencie_id"
+    t.string "status"
   end
 
   create_table "sites", force: :cascade do |t|
