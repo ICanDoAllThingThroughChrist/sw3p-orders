@@ -1,4 +1,4 @@
-class OrderStatuse < ApplicationRecord
+class OrderStatus < ApplicationRecord
     belongs_to :order
     belongs_to :statuse
 end

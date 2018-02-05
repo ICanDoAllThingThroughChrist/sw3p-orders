@@ -9,8 +9,8 @@ class Order < ApplicationRecord
     has_many :task, through: :order_tasks#, :inverse_of => :order
     accepts_nested_attributes_for :task
     has_many :order_frequencies
-    has_many :frequencie, through: :order_frequencies#, :inverse_of => :order
-    accepts_nested_attributes_for :frequencie
+    has_many :frequencies, through: :order_frequencies#, :inverse_of => :order
+    accepts_nested_attributes_for :frequencies
     has_many :order_deadlines
     has_many :deadline, through: :order_deadlines#, :inverse_of => :order
     accepts_nested_attributes_for :deadline
