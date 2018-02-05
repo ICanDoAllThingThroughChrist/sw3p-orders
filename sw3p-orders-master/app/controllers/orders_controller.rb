@@ -7,12 +7,11 @@ class OrdersController < ApplicationController
         @user = current_user
         binding.pry
         @order = @user.orders.build
-        @order.task.build
         #@order.frequencies.build
         #@order.frequency.build
-        @order.deadline.build
+        #@order.deadlines.build
         #@order.statuse.build
-        @order.statuse.build
+        #@order.statuse.build
         # @order.build_task#https://stackoverflow.com/questions/2472982/using-build-with-a-has-one-association-in-rails
         # @order.build_frequencie
         # @order.build_deadline

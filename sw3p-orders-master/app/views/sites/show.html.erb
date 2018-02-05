@@ -1,6 +1,6 @@
 <h2><%= @site.name %> </h2> has following tasks: 
 <% @site.orders.each do |order| %>
-<li><%= link_to order.task.name, site_order_path(@site, order), method: :get %></li>
+<li><%= link_to order.tasks.map {|task| puts "#{task}"}, site_order_path(@site, order), method: :get %></li>
   <%# binding.pry %>
 <% end %>
 <p><%= link_to 'create a new order for site and task', new_site_order_path(@site) %></p>

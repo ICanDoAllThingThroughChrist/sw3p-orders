@@ -6,17 +6,17 @@ class Order < ApplicationRecord
     #belongs_to :deadline 
     #belongs_to :statuse
     has_many :order_tasks
-    has_many :task, through: :order_tasks#, :inverse_of => :order
-    accepts_nested_attributes_for :task
+    has_many :tasks, through: :order_tasks#, :inverse_of => :order
+    accepts_nested_attributes_for :tasks
     has_many :order_frequencies
     has_many :frequencies, through: :order_frequencies#, :inverse_of => :order
     accepts_nested_attributes_for :frequencies
     has_many :order_deadlines
-    has_many :deadline, through: :order_deadlines#, :inverse_of => :order
-    accepts_nested_attributes_for :deadline
+    has_many :deadlines, through: :order_deadlines#, :inverse_of => :order
+    accepts_nested_attributes_for :deadlines
     has_many :order_statuses
-    has_many :statuse, through: :order_statuses#, :inverse_of => :order
-    accepts_nested_attributes_for :statuse
+    has_many :statuses, through: :order_statuses#, :inverse_of => :order
+    accepts_nested_attributes_for :statuses
     has_many :comments
     #has_one :task, inverse_of: :order
     accepts_nested_attributes_for :comments#, allow_destroy: true
