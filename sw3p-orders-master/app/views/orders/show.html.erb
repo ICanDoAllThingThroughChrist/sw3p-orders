@@ -1,4 +1,6 @@
 <p><% @order.comments.each do |comment| %></p>
-<h3><%= "#{comment}" %>
+<h4><%= order comment: "#{comment.comment}" %></h4>
 <% end %>
-<p> <%= link_to "Edit or Create", edit_site_order_path(@order) %></p>
+<% @orderid = @order.id%>
+<p><%= "#{@orderid}"%>
+<p> <%= link_to "Edit Existing or Create Order", edit_site_order_path(@order) %></p>

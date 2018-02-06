@@ -7,15 +7,6 @@ class OrdersController < ApplicationController
         @user = current_user
         binding.pry
         @order = @user.orders.build
-        #@order.frequencies.build
-        #@order.frequency.build
-        #@order.deadlines.build
-        #@order.statuse.build
-        #@order.statuse.build
-        # @order.build_task#https://stackoverflow.com/questions/2472982/using-build-with-a-has-one-association-in-rails
-        # @order.build_frequencie
-        # @order.build_deadline
-        # @order.build_statuse
         @order.comments.build
         #@book.reload_author is used where collection of authors where to be selected under books#new form
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
@@ -34,7 +25,7 @@ class OrdersController < ApplicationController
         #binding.pry
         #raise.params.inspect
         #https://agilewarrior.wordpress.com/2011/10/22/rails-drop-downs/
-        #binding.pry
+        binding.pry
         @order = Order.new(order_params) 
         binding.pry
         if @order.save
@@ -86,24 +77,16 @@ class OrdersController < ApplicationController
         else params[:id]
          binding.pry
          @order = Order.find(params[:id])
-        #  c = {"0" => order_params["comments_attributes"]["0"]["comment"]}
-        #  @order.comments.each do |c|
-        #     binding.pry
-        #     c.comment = order_params["comments_attributes"]["0"]["comment"]
-        #  end 
-         #@order.comments.build
          binding.pry
-            # if !@order.comments.empty?
-            #     @order.comments.build(order_params)
-                #@order.comments.build if !@order.comments.empty? #this builds a separate column/row cell in the row, i.e. failed
-            # end
-            @order.save
+        @order.save
+        redirect_to site_orders_url
         end 
     end 
 
     private 
     def order_params
-        params.require(:order).permit(:site_id, :user_id,  
+        params.require(:order).permit(:site_id, :user_id,
+        :task, :site, :deadline, :frequency,  
         :task_attributes => [:id], :task_attributes => [:name], 
         :statuse_attributes => [:id], :statuse_attributes => [:status], 
         :deadline_attributes => [:id], :deadline_attributes => [:deadline], 
@@ -113,3 +96,21 @@ class OrdersController < ApplicationController
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end
 
+     #@order.frequencies.build
+        #@order.frequency.build
+        #@order.deadlines.build
+        #@order.statuse.build
+        #@order.statuse.build
+        # @order.build_task#https://stackoverflow.com/questions/2472982/using-build-with-a-has-one-association-in-rails
+        # @order.build_frequencie
+        # @order.build_deadline
+        # @order.build_statuse     #  c = {"0" => order_params["comments_attributes"]["0"]["comment"]}
+        #  @order.comments.each do |c|
+        #     binding.pry
+        #     c.comment = order_params["comments_attributes"]["0"]["comment"]
+        #  end 
+         #@order.comments.build
+                   # if !@order.comments.empty?
+            #     @order.comments.build(order_params)
+                #@order.comments.build if !@order.comments.empty? #this builds a separate column/row cell in the row, i.e. failed
+            # end

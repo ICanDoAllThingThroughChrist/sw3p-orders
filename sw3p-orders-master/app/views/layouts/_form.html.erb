@@ -3,9 +3,13 @@
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :site_id %> 
     <%= f.label :task %><br>
-    <%= f.fields_for :task, @order.tasks.each do |task| %>
-    <%= task.collection_select(:tasks,Task.all,:id, :name, {:selected => @order.task_ids, :include_blank => true}, {:multiple => true}) %><br>
-    <% end %>
+    <%= f.select :task, ['task1', 'task2'] %><br>
+    <%= f.label :frequency %><br>
+    <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+    <%= f.label :deadline %><br>
+    <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
+    <%= f.label :status %><br>
+    <%= f.select :status, ['status1', 'status2'] %><br>
      <%# binding.pry %>
     <%#b/c string value of comments during update as opposed to hash during create
     , this field'll not appear in order#update call%>
@@ -17,13 +21,12 @@
      <%# binding.pry %>
      <p><%= f.submit "Edit or Create Order"%></p><br>
 <% end %>
+
 <%#= f.fields_for :status, @order.statuses.each do |c| %>
       <%# binding.pry %>
          <%#= f.collection_select :statuse_id, Statuse.all, :id, :status %>
 <%#https://stackoverflow.com/questions/8239961/rails-has-many-through-and-collection-select-with-multiple%>
-<%#= f.select :task, ['task1', 'task2'] %>
-<%#= f.label :frequency %><br>
-     <%#= f.select :frequency, ['freqs1', 'freqs2'] %>
+<%#= f.label :frequency %>
      <%#= f.fields_for :frequencie, @order.frequencie do |c| %>
         <%# binding.pry %>
            <%#= f.collection_select :frequencie_id, Frequencie.all, :id, :frequency %>
@@ -32,15 +35,16 @@
       <%# binding.pry %>
          <%#= f.collection_select :deadline_id, Deadline.all, :id, :deadline %>
 <%# end %>
-<%#= f.label :deadline %><br>
 <%#= collection_select(:order, :deadline_ids, 
          Deadline.all,:id, :deadline, {:selected => @order.deadline_ids, :include_blank => true}, {:multiple => true}) %><br>
 <%#= f.select :deadline, ['deadline1', 'deadline2'] %>
-<%#= f.label :status %><br>
 <%#= f.fields_for :status, @order.statuses.each do |status| %>
 <%#= status.collection_select(:order, :status_ids, Status.all,:id, :status, {:selected => @order.status_ids, :include_blank => true}, {:multiple => true}) %><br>
  <%# end %>
  <%#= f.fields_for :task, @order.task do |c| %>
-      <% #binding.pry %>
+      <%#binding.pry %>
          <%#= c.collection_select :task_id, Task.all, :id, :name %>
    <%# end %>
+  <%#= f.fields_for :task, @order.tasks.each do |task| %>
+    <%#= task.collection_select(:tasks,Task.all,:id, :name, {:selected => @order.task_ids, :include_blank => true}, {:multiple => true}) %><br>
+    <%# end %>
