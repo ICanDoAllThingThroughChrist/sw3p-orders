@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :tasks
   #accepts_nested_attributes_for :task
   # accepts_nested_attributes_for :task
+  # belongs_to :current_site, class_name: 'Site', foreign_key: 'site_id'
 
 end
 #http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
