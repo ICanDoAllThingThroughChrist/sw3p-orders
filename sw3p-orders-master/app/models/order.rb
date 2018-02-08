@@ -43,10 +43,12 @@ class Order < ApplicationRecord
         binding.pry
         if value[:comment] == nil
             new_comment = Comment.create(comment: 'a comment')
+            binding.pry #http://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html
             self.comments << new_comment
         else 
             if !value[:comment].empty?
                 if new_comment = Comment.find_by(comment: value[:comment])
+                    binding.pry
                     self.comments << new_comment 
                 else
                     self.comments.build(comment: value[:comment])

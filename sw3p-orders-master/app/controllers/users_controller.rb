@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       #@user = User.new(user_params)
-      #binding.pry 
+      binding.pry 
       if @user.save
         #binding.pry
         flash[:success] = "Welcome to the Sample App!"

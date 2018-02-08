@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
         binding.pry
        if params[:order_id]
         @order = Order.find(params[:order_id])
-        @order.comments.build
+        #@order.comments.update_attributes
         #render :edit "app did not hit this line after order edit completion, trying update"
         binding.pry
        else params[:id]

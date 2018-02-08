@@ -13,14 +13,15 @@
      <%= f.label :status %><br>
     <%= f.label :comment %><br>
     <%= f.fields_for :comments, @order.comments do |c| %>
+      <%#http://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html%>
       <% binding.pry %>
          <%= "comments: #{c.object.comment}" %><br>
    <% end %><br>
    <% binding.pry %>
-    <%= f.fields_for :comments, @order.comments.build do |c| %>
+    <%#= f.fields_for :comments, @order.comments.build do |c| %>
         <% binding.pry %>
-           <%= c.text_field :comment %><br>
-     <% end %><br>
+           <%#= c.text_field :comment %><br>
+     <%# end %><br>
      <% binding.pry %>
      <p><%= f.submit "Edit or Create Order"%></p><br>
 <% end %>
