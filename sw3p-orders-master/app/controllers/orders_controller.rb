@@ -54,12 +54,13 @@ class OrdersController < ApplicationController
         binding.pry
        if params[:order_id]
         @order = Order.find(params[:order_id])
-        2.times { @order.comments.build}
+        @order.comments.build
         #render :edit "app did not hit this line after order edit completion, trying update"
         binding.pry
        else params[:id]
+        binding.pry
         @order = Order.find(params[:id])
-        2.times { @order.comments.build}
+        #@order.comments.build
        end 
     end
     

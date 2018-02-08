@@ -12,6 +12,11 @@
      <%= f.select :deadline, ['deadline1', 'deadline2'] %>
      <%= f.label :status %><br>
     <%= f.label :comment %><br>
+    <%= f.fields_for :comments, @order.comments do |c| %>
+      <% binding.pry %>
+         <%= "comments: #{c.object.comment}" %><br>
+   <% end %><br>
+   <% binding.pry %>
     <%= f.fields_for :comments, @order.comments.build do |c| %>
         <% binding.pry %>
            <%= c.text_field :comment %><br>

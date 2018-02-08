@@ -41,6 +41,10 @@ class Order < ApplicationRecord
         binding.pry
         comment_attributes.each do |key, value|#key, value hash during Create Order, BUT fails for comment_attributes is a string during update
         binding.pry
+        if value[:comment] == nil
+            new_comment = Comment.create(comment: 'a comment')
+            self.comments << new_comment
+        else 
             if !value[:comment].empty?
                 if new_comment = Comment.find_by(comment: value[:comment])
                     self.comments << new_comment 
@@ -48,6 +52,7 @@ class Order < ApplicationRecord
                     self.comments.build(comment: value[:comment])
                 end 
             end 
+        end
         end
     end 
 end
