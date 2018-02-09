@@ -69,16 +69,57 @@ class OrdersController < ApplicationController
         if params[:id]
          binding.pry
          @order = Order.find(params[:id])#https://learn.co/tracks/full-stack-web-development-v3/rails/crud-with-rails/edit-update-action
-         @order.update(order_params)#https://learn.co/tracks/full-stack-web-development-v3/rails/crud-with-rails/edit-update-action
-         binding.pry
-         @order.save
-         redirect_to site_orders_url
-        end 
+         #https://learn.co/tracks/full-stack-web-development-v3/rails/crud-with-rails/edit-update-action
+         binding.pry  
+            if !@order.comment_id == nil  
+                @order.comment_id = (params[:comment][:id])
+                params[:site_id] = @order.site_id
+                binding.pry
+                @order.save
+                redirect_to site_orders_url(@order.site_id)
+            else 
+                binding.pry
+                @order.update(order_params)
+                @order.save
+                redirect_to site_orders_url
+            end
+         end
+        #end 
     end 
+    def remove_comment#remove_comment
+        @order = Order.find(params[:id])
+        @order.comments.delete(Comment.find(params[:which_comment]))
+        if @order.save
+        flash[:notice] = ‘Comment has been removed.’
+        end
+        redirect_to :action => ‘show’, :id => @order 
+    end
+    def add_comment#add_comment
+        @order = Order.find(params[:id]) 
+        @order.comments.push_with_attributes(Comment.find(params[:comment][:id]))
+        if @order.save
+            flash[:notice] = ‘Comment has been added!’
+        end
+            redirect_to :action => ‘show’, :id => params[:id] 
+    end
+    # def add_some_comments#comments
+    #     @order = Order.find(params[:id]) 
+    #     @unused_comments = Comment.all - @order.comments
+    #     if @unused_comments.any?
+    #     @comments_to_add = @unused_comments.select { |comment|
+    #         (@params[‘comment’+comment.id.to_s][‘checked’] == ‘1’)} 
+    #     @comments_to_add.each { |comment|
+    #         @order.comments.push_with_attributes(comment)} 
+    #     end
+    #     if @comments_to_add.any? and @order.save 
+    #         flash[:notice] = ‘comments have been added!’
+    #     end
+    #     redirect_to :action => ‘show’, :id => @order
+    # end
 
     private 
     def order_params
-        params.require(:order).permit(:site_id, :user_id,
+        params.require(:order).permit(:id, :which_comment, :site_id, :user_id,
         :task, :site, :deadline, :frequency,  
         :comments_attributes => [:id], :comments_attributes => [:comment])
     end 

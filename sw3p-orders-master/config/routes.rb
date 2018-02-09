@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
   get  '/signup',     to: 'users#new'
   post '/signup',     to: 'users#create'
-  get    '/login/',    to: 'sessions#new'  #cRud = 'GET login to READ sessions#new form & controller'
+  get    '/login/',   to: 'sessions#new'  #cRud = 'GET login to READ sessions#new form & controller'
   post   '/login',    to: 'sessions#create'#Crud = 'Post data from login page to Create new record'
   delete '/logout',   to: 'sessions#destroy'
+  post "sites/:id/orders/:id", to: 'orders#update'
   resources :sites, only: [:index, :new, :create, :show] do 
-    resources :orders
+    resources :orders,only: [:new, :create, :show, :index, :edit, :update, :add_comment, :add_some_comments] 
   end
   # resources :order, only: [:create, :update] do 
   #   resources :comments
   # end
-  post '/sites/:id/orders/:id/edit' => "orders#update"
-  patch '/sites/:id/orders'         => 'orders#update'
-  # resources :orders, only: [:edit, :update] 
+  # post '/sites/:id/orders/:id/edit' => "orders#update"
+  # patch '/sites/:id/orders'         => 'orders#update'
+  get '/sites/:id/orders/:id'       => 'orders#add_comment'
+  resources :orders#, only: [:edit, :update, :add_comment, :add_some_comments] 
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'

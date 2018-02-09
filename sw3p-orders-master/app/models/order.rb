@@ -17,7 +17,7 @@ class Order < ApplicationRecord
     has_many :order_statuses
     has_many :statuses, through: :order_statuses#, :inverse_of => :order
     accepts_nested_attributes_for :statuses
-    has_many :comments
+    has_and_belongs_to_many :comments
     #has_one :task, inverse_of: :order
     accepts_nested_attributes_for :comments#, allow_destroy: true
     #has_many :tasks, inverse_of: :order
