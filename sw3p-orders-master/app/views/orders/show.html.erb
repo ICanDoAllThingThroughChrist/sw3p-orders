@@ -4,3 +4,29 @@
 <% @orderid = @order.id%>
 <p><%= "#{@orderid}"%>
 <p> <%= link_to "Edit Existing or Create Order", edit_site_order_path(@order) %></p>
+
+
+<% if @order.comments.empty? %> 
+    (None)<p>
+<% else %>
+    <% for comment in @order.comments %>
+    <%#= comment.name %>&nbsp;
+    <%#= link_to ‘Remove’, { :action => ‘remove_comment’,:id => @order, :which_comment => comment.id },:confirm => "are you sure", :post => true %><br />
+   <% end %>
+<% end %>
+<% @unused_comments =
+    Comment.all - @order.comments %>
+<% if @unused_comments.any? %>
+    <%#= form_tag({:action => 'add_comment'},{:id => @order}) %> 
+         <!--b>Add a comment:</b><br>
+        <%#= collection_select(:comment, :id, @unused_comments, :id, :comment) %><br/>
+    <%#= submit_tag %> 
+    <%#= end %><p>
+    <%#= form_tag({:action => 'add_some_comments'},{:id => @order}) %>
+        <%# @unused_comments.each {|comment| %>
+            <%#= check_box(‘comment’+comment.id.to_s, ‘checked’) +
+                comment.name %><br/> 
+        <%# } %>
+    <%#= submit_tag %> 
+    <%#= end %>
+<% end %><p>
