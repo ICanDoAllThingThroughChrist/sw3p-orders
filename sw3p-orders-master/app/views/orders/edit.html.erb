@@ -12,38 +12,15 @@
      <%= f.select :deadline, ['deadline1', 'deadline2'] %>
      <%= f.label :status %><br>
     <%= f.label :comment %><br>
-    <%= f.fields_for :comments, @order.comments do |c| %>
-      <%#http://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html%>
-      <% binding.pry %>
-         <%= "comments: #{c.object.comment}" %><br>
-   <% end %><br>
-   <% binding.pry %>
-    <%#= f.fields_for :comments, @order.comments.build do |c| %>
-        <% binding.pry %>
-           <%#= c.text_field :comment %><br>
-     <%# end %><br>
-     <% binding.pry %>
-     <p><%= f.submit "Edit or Create Order"%></p><br>
+    <%= f.fields_for @order.comments.build do |c| %>
+            <% c.options.each do |key,value| %>
+                  <% if "#{key}" == "parent_builder" %>
+                        <% binding.pry %>
+                  <%= "value.text_field: #{value.object.comments.each do |comment| "#{comment}" end }" %>
+                  <% else %>
+                  <%= puts "#{key}" %>
+                  <% end %>
+            <% end %>
+      <% end %>
+<%= f.submit "Update" %>
 <% end %>
-
-  <%#= f.fields_for :task do |c| %>
-        <%# binding.pry %>
-           <%#= c.collection_select :id, Task.all, :id, :name %><br>
-     <%# end %>
-        <%#= f.fields_for :statuse do |c| %>
-        <%# binding.pry %>
-           <%#= c.collection_select :id, Statuse.all, :id, :status %><br>
-     <%# end %>
-    <%# during edit call, must call .build, for the form text field to show up %>
-    <%#= f.fields_for :comments do |comment_fields| %>
-    <%#     Delete: <%= comment_fields.check_box :_destroy %>
-    <%# end %>
-
-        <%#= f.fields_for :frequencie do |c| %>
-        <%# binding.pry %>
-           <%#= c.collection_select :id, Frequencie.all, :id, :frequency %><br>
-     <%# end %>
-       <%#= f.fields_for :deadline do |c| %>
-        <%# binding.pry %>
-           <%#= c.collection_select :id, Deadline.all, :id, :deadline %><br>
-     <%# end %>
