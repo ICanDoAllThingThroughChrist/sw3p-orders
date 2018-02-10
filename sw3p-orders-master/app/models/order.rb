@@ -5,18 +5,18 @@ class Order < ApplicationRecord
     #belongs_to :frequencie 
     #belongs_to :deadline 
     #belongs_to :statuse
-    has_many :order_tasks
-    has_many :tasks, through: :order_tasks#, :inverse_of => :order
-    accepts_nested_attributes_for :tasks
-    has_many :order_frequencies
-    has_many :frequencies, through: :order_frequencies#, :inverse_of => :order
-    accepts_nested_attributes_for :frequencies
-    has_many :order_deadlines
-    has_many :deadlines, through: :order_deadlines#, :inverse_of => :order
-    accepts_nested_attributes_for :deadlines
-    has_many :order_statuses
-    has_many :statuses, through: :order_statuses#, :inverse_of => :order
-    accepts_nested_attributes_for :statuses
+    # has_many :order_tasks
+    # has_many :tasks, through: :order_tasks#, :inverse_of => :order
+    # accepts_nested_attributes_for :tasks
+    # has_many :order_frequencies
+    # has_many :frequencies, through: :order_frequencies#, :inverse_of => :order
+    # accepts_nested_attributes_for :frequencies
+    # has_many :order_deadlines
+    # has_many :deadlines, through: :order_deadlines#, :inverse_of => :order
+    # accepts_nested_attributes_for :deadlines
+    # has_many :order_statuses
+    # has_many :statuses, through: :order_statuses#, :inverse_of => :order
+    # accepts_nested_attributes_for :statuses
     has_and_belongs_to_many :comments
     #has_one :task, inverse_of: :order
     accepts_nested_attributes_for :comments#, allow_destroy: true
@@ -40,7 +40,7 @@ class Order < ApplicationRecord
     def comments_attributes=(comment_attributes)
         binding.pry
         comment_attributes.each do |key, value|#key, value hash during Create Order, BUT fails for comment_attributes is a string during update
-        binding.pry
+        #binding.pry
         if value[:comment] == nil
             new_comment = Comment.create(comment: 'a comment')
             binding.pry #http://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html
@@ -50,6 +50,7 @@ class Order < ApplicationRecord
                 if new_comment = Comment.find_by(comment: value[:comment])
                     binding.pry
                     self.comments << new_comment 
+                    binding.pry
                 else
                     self.comments.build(comment: value[:comment])
                 end 

@@ -12,15 +12,9 @@
      <%= f.select :deadline, ['deadline1', 'deadline2'] %>
      <%= f.label :status %><br>
     <%= f.label :comment %><br>
-    <%= f.fields_for @order.comments.build do |c| %>
-            <% c.options.each do |key,value| %>
-                  <% if "#{key}" == "parent_builder" %>
-                        <% binding.pry %>
-                  <%= "value.text_field: #{value.object.comments.each do |comment| "#{comment}" end }" %>
-                  <% else %>
-                  <%= puts "#{key}" %>
-                  <% end %>
-            <% end %>
-      <% end %>
+    <%= f.fields_for :comments, @order.comments.build do |c| %>
+       <% binding.pry%>
+            <% c.text_fields: :comments %>
+        <% end %>
 <%= f.submit "Update" %>
 <% end %>

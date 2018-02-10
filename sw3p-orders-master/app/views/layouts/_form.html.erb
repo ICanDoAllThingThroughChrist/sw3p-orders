@@ -16,6 +16,7 @@
     <%=f.label :comment %><br>   
     <%= f.fields_for :comments, @order.comments.build do |c| %>
         <%# binding.pry %>
+        
            <%= c.text_field :comment %><br>
      <% end %><br>
      <%# binding.pry %>
