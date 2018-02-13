@@ -60,7 +60,9 @@ class OrdersController < ApplicationController
          if @order.update_attributes(order_params)
             flash[:success] = "Order Updated"
             redirect_to @order 
+            binding.pry
          else 
+            binding.pry
             render 'edit'
          end 
     end
@@ -68,8 +70,8 @@ class OrdersController < ApplicationController
     private 
     def order_params
         params.require(:order).permit(:id, :which_comment, :site_id, :user_id,
-        :task, :site, :deadline, :frequency,  
-        :comments_attributes => [:id, :comment_id, :comment])#https://stackoverflow.com/questions/19270518/edit-nested-in-a-form
+        :task, :site, :deadline, :frequency, :comment_names,  
+        :comments_attributes => [:id, :comment_id, :comment, :comment_names])#https://stackoverflow.com/questions/19270518/edit-nested-in-a-form
     end 
     #https://learn.co/tracks/full-stack-web-development-v3/rails/routes-and-resources/modifying-nested-resources
 end

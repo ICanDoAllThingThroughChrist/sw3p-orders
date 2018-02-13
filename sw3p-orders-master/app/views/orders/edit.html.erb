@@ -8,16 +8,20 @@
       <%= f.select :task, ['task1', 'task2'] %><br>
     </div>
     <div class="field">
-        <%= f.label :frequency %><br>
-        <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+       <%= f.label :frequency %><br>
+       <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
      </div>
      <div class="field">
-        <%= f.label :deadline %><br>
-        <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
+       <%= f.label :deadline %><br>
+       <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
      </div>
      <div class="field">
         <%= f.label :comment %><br />
         <%= f.text_field :comment_names %>
      </div>
-<%= f.submit "Update" %>
+     <%= f.label :comments %><br />
+     <%= f.fields_for :comments, @order.comments.build do |comment| %>
+            <% comment.text_field :comment %>
+        <% end %>
+    <%= f.submit "Update" %>
 <% end %>

@@ -12,20 +12,24 @@ class Order < ApplicationRecord #Class Survey
         where(user:user_id) 
     end
     def comments_attributes=(comment_attributes)
-        comments_array = []
-        comments_array << Comment.all
         binding.pry
         comment_attributes.each do |key, value|#key, value hash during Create Order, BUT fails for comment_attributes is a string during update
-            binding.pry   
-            if value[:comment].empty?
-             new_comment == 'nil'
-             comments_attributes << new_comment 
+        binding.pry
+            if value[:comment] == nil
+                new_comment = Comment.create(comment: 'a comment')
+                binding.pry #http://www.xyzpub.com/en/ruby-on-rails/3.2/activerecord_datensatz_veraendern.html
+                self.comments << new_comment
             else 
-             new_comment = Comment.find_by(id: value[:comment]) 
-             comments_attributes << new_comment
-            binding.pry
-            end 
-        end     
+                if !value[:comment].empty?
+                    if new_comment = Comment.find_by(comment: value[:comment])
+                        binding.pry
+                        self.comments << new_comment 
+                    else
+                        self.comments.build(comment: value[:comment])
+                    end 
+                end 
+            end
+        end 
     end 
     def create_comment
         self.comment = Comment.create(name: new_comment) if new_comment.present?
