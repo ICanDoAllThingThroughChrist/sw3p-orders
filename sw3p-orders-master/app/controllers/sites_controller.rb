@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-    before_action :logged_in?, only: [:new, :create, :index]
+    before_action :logged_in?, only: [:new, :create, :index, :show]
     def index
         @site = Site.all
     end

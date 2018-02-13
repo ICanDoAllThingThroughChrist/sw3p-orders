@@ -2,26 +2,40 @@
 <%= form_for @order, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :site_id %> 
-    <%= f.label :task %><br>
-    <%= f.select :task, ['task1', 'task2'] %><br>
-    <%= f.label :frequency %><br>
-    <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
-    <%= f.label :deadline %><br>
-    <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
-    <%= f.label :status %><br>
-    <%= f.select :status, ['status1', 'status2'] %><br>
+    <div class="field">
+      <%= f.label :task %><br>
+      <%= f.select :task, ['task1', 'task2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :frequency %><br>
+      <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :deadline %><br>
+      <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :status %><br>
+      <%= f.select :status, ['status1', 'status2'] %><br>
+    </div>
      <%# binding.pry %>
     <%#b/c string value of comments during update as opposed to hash during create
     , this field'll not appear in order#update call, unless @order.comments.build is called%>
-    <%=f.label :comment %><br>   
-    <%= f.fields_for :comments, @order.comments.build do |c| %>
-        <%# binding.pry %>
-        
-           <%= c.text_field :comment %><br>
-     <% end %><br>
-     <%# binding.pry %>
+      <div class="field">
+            <%=f.label :comment_id %><br>   
+            <%= f.collection_select :comment_id, Comment.order(:name), :id, :name %>
+            or create new comment:
+            <%= f.text_field :new_comment %><br>
+      </div>
+       <div class="field">
+            <%= f.fields_for :comments do |name|%>
+            <%= name.label :name, :rows => 1 %>
+            <%= name.check_box :_destroy %>
+            <%= name.label :_destroy, "Remove Comment"%>
+       </div>
      <p><%= f.submit "Edit or Create Order"%></p><br>
 <% end %>
+
 
 <%#= f.fields_for :status, @order.statuses.each do |c| %>
       <%# binding.pry %>
