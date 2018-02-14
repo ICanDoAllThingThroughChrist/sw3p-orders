@@ -1,6 +1,8 @@
 class Site < ApplicationRecord #Class Survey
+    belongs_to :user
     has_many :orders, :dependent => :destroy#so that when we delete a site(survey) all of its orders(questions) are deleted too
     accepts_nested_attributes_for :orders
+    has_many :sitetasks
     has_many :tasks, through: :sitetasks
     accepts_nested_attributes_for :tasks
     def tasks_attributes=(task_attributes)

@@ -4,20 +4,22 @@
         <%= f.label :name %>
         <%= f.text_field :name %>
     </div>
-   <!-- Collection of checkboxes for equipment ids -->
-<p></p>
+   <!-- Collection of checkboxes for task ids -->
     <div>
         <%= f.label "Select Tasks" %>
         <div>
             <p><%= f.collection_select(:task_ids, Task.all, :id, :name) %></p>
         </div>
     </div>
-    <!-- 3 New Equipment Fields -->
-               
-            <%= f.fields_for :task do |task_field| %>
+    <!-- New Tasks Fields -->        
+            <%= f.fields_for :tasks do |task_field| %>
                 <%= task_field.label :name %>
+                <%= task_field.label :deadline %>
+                <%= task_field.label :occurence_frequency %>
                 <div>
                     <%= task_field.text_field :name %>
+                    <%= task_field.text_field :deadline %>
+                    <%= task_field.text_field :occurence %>
                 </div>
             <% end %>
          <%= f.submit "Create Site" %>
