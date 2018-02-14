@@ -21,45 +21,13 @@
      <%# binding.pry %>
     <%#b/c string value of comments during update as opposed to hash during create
     , this field'll not appear in order#update call, unless @order.comments.build is called%>
-      <div class="field">
-            <%=f.label :comment_id %><br>   
-            <%= f.collection_select :comment_id, Comment.order(:name), :id, :name %>
-            or create new comment:
-            <%= f.text_field :new_comment %><br>
-      </div>
        <div class="field">
-            <%= f.fields_for :comments do |name|%>
-            <%= name.label :name, :rows => 1 %>
-            <%= name.check_box :_destroy %>
-            <%= name.label :_destroy, "Remove Comment"%>
+            <%= f.fields_for :comments, @order.comments.build do |comments_fields|%>
+            <%= comments_fields.label :comment %><br>
+            <%= comments_fields.text_field :comment %><br>
+            <%= comments_fields.label :comment_is_related_to_which_task? %><br>
+            <%= comments_fields.text_field :task %><br>
        </div>
-     <p><%= f.submit "Edit or Create Order"%></p><br>
+       <% end %>
+  <%= f.submit %>
 <% end %>
-
-
-<%#= f.fields_for :status, @order.statuses.each do |c| %>
-      <%# binding.pry %>
-         <%#= f.collection_select :statuse_id, Statuse.all, :id, :status %>
-<%#https://stackoverflow.com/questions/8239961/rails-has-many-through-and-collection-select-with-multiple%>
-<%#= f.label :frequency %>
-     <%#= f.fields_for :frequencie, @order.frequencie do |c| %>
-        <%# binding.pry %>
-           <%#= f.collection_select :frequencie_id, Frequencie.all, :id, :frequency %>
-<%# end %>
-<%#= f.fields_for :deadline, @order.deadline.each do |c| %>
-      <%# binding.pry %>
-         <%#= f.collection_select :deadline_id, Deadline.all, :id, :deadline %>
-<%# end %>
-<%#= collection_select(:order, :deadline_ids, 
-         Deadline.all,:id, :deadline, {:selected => @order.deadline_ids, :include_blank => true}, {:multiple => true}) %><br>
-<%#= f.select :deadline, ['deadline1', 'deadline2'] %>
-<%#= f.fields_for :status, @order.statuses.each do |status| %>
-<%#= status.collection_select(:order, :status_ids, Status.all,:id, :status, {:selected => @order.status_ids, :include_blank => true}, {:multiple => true}) %><br>
- <%# end %>
- <%#= f.fields_for :task, @order.task do |c| %>
-      <%#binding.pry %>
-         <%#= c.collection_select :task_id, Task.all, :id, :name %>
-   <%# end %>
-  <%#= f.fields_for :task, @order.tasks.each do |task| %>
-    <%#= task.collection_select(:tasks,Task.all,:id, :name, {:selected => @order.task_ids, :include_blank => true}, {:multiple => true}) %><br>
-    <%# end %>

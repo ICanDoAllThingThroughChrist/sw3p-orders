@@ -38,6 +38,7 @@ table#t01 th {
     <th>Frequency</th> 
     <th>Site Name</th>
     <th>Comment</th>
+    <th>Comments Task Tag</th>
     <th>edit order</th>
   </tr>
   <tr><% @orders.each do |order| %></tr>
@@ -53,6 +54,7 @@ table#t01 th {
         <% if order.comments.present? %>
             <% order.comments.each do |comment| %>
                     <td><%= comment.comment %></td>
+                    <td><%= comment.task %></td>
                 <% end %>
                 <%# binding.pry %>
         <% else %>

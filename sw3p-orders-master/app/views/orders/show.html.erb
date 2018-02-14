@@ -1,5 +1,6 @@
 <p><% @order.comments.each do |comment| %></p>
-<h4><%= "order's comment: #{comment.name}" %></h4>
+<h4><%= "order's comment: #{comment.comment}" %></h4>
+<h4><%= "order's comment task tag: #{comment.task}" %></h4>
 <% end %>
 <% @orderid = @order.id%>
 <p><%= "#{@orderid}"%>

@@ -15,11 +15,7 @@
        <%= f.label :deadline %><br>
        <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
      </div>
-     <div class="field">
-        <%= f.label :comment %><br />
-        <%= f.text_field :comment_names %>
-     </div>
-     <%= f.label :comments %><br />
+     <%= f.label :comments %><br/>
      <%= f.fields_for :comments, @order.comments.build do |comment| %>
             <% comment.text_field :comment %>
         <% end %>
