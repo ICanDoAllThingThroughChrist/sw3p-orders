@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   #belongs_to :current_order, class_name: 'Order', foreign_key: 'order_id' #failed to allow sessions#new when this is included
-  # has_many :orders
-  # has_many :sitetasks
-  # has_many :sites, through: :sitetasks
+  has_many :orders
+  has_many :user_sites
+  has_many :sites, through: :user_sites
   # has_many :tasks
   # has_many :tasks, through: :sitetasks
   #accepts_nested_attributes_for :task

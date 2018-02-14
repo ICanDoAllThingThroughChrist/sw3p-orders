@@ -1,5 +1,6 @@
 <h2>New Site Form</h2>
 <%= form_for @site do |f|%>
+    <%= f.hidden_field :user_id %>
     <div>
         <%= f.label :name %>
         <%= f.text_field :name %>

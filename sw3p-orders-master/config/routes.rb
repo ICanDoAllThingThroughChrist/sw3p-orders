@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :sites, only: [:index, :new, :create, :show] do 
     resources :orders,only: [:new, :create, :show, :index, :edit, :update, :add_comment, :add_some_comments] 
   end
+  resources :sites, only: [:index, :new, :create, :show] do 
+    resources :tasks,only: [:new, :create, :show, :index, :edit, :update] 
+  end
   # resources :order, only: [:create, :update] do 
   #   resources :comments
   # end

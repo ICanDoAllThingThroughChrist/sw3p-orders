@@ -4,6 +4,8 @@ class SitesController < ApplicationController
         @site = Site.all
     end
     def new 
+        @site = Site.find(params[:site_id])
+        @user = current_user
         @site = Site.new 
         @site.tasks.build
         @task = Task.all

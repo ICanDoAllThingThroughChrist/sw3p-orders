@@ -3,9 +3,16 @@ class TasksController < ApplicationController
         if params[:user_id] && !User.exists?(params[:user_id])
           redirect_to users_path, alert: "User not found."
         else
+          @user = current_user
+          #@site = Site.find(params[:site_id])
           @task = Task.new(user_id: params[:user_id])
+          #@task.site = @site
         end
-      end
+    end
+    def create
+      binding.pry
+      @task = Task.create(task_params)
+    end 
     def index
   # provide a list of users to the view for the filter control
         @users = User.all   
@@ -39,17 +46,17 @@ class TasksController < ApplicationController
         if user.nil?
           redirect_to user_path, alert: "User not found."
         else
-          @post = user.posts.find_by(id: params[:id])
+          @task = user.tasks.find_by(id: params[:id])
           redirect_to user_tasks_path(user), alert: "Task not found." if @task.nil?
         end
       else
-        @post = Post.find(params[:id])
+        @task = Task.find(params[:id])
       end
     end
   
     def update
-      @post = Post.find(params[:id])
-      authorize @post
+      @task = Task.find(params[:id])
+      authorize @task
     # perform an update
     end
     private 

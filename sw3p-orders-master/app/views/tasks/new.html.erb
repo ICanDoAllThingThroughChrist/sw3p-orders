@@ -1,9 +1,10 @@
-<%= render "layouts/errors", :object => @order %>  
-<%= form_for @order, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+<%= render "layouts/errors", :object => @site %>  
+<%= form_for @task, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :site_id %> 
-    <%= f.label :task %><br>
-    <%= f.fields_for :task, @order.tasks.each do |task| %>
-        <%= task.collection_select(:tasks,Task.all,:id, :name, {:selected => @order.task_ids, :include_blank => true}, {:multiple => true}) %><br>
+    <%= f.label :site %><br>
+    <%= f.fields_for :sites, @task.sites.each do |site| %>
+        <%= site.label :name %>
+        <%= site.collection_select(:sites,Site.all,:id, :name, {:selected => @site.task_ids, :include_blank => true}, {:multiple => true}) %><br>
         <% end %>
     <% end %>
+<%= f.submit 'create task' %>
