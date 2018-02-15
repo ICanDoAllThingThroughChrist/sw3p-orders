@@ -1,6 +1,11 @@
-<h1>Believe It Or Not I'm On Air</h1>
+<% binding.pry %>
 <% @tasks.each do |task| %>
   <div>
-    <%= task.name %>
-  </div>
+    task id: <%= task.id %> <br>
+    task name:<%= task.name %><br>
+    task deadline: <%= task.deadline %><br>
+    task status report:<%= task.status_report %><br>
+    task creation date:<%= task.created_at %><br>
+    task updated date: <%= task.updated_at %><br>
+  </div><br>
 <% end %>
