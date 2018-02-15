@@ -8,6 +8,7 @@ class TasksController < ApplicationController
     def create
       binding.pry
       @task = Task.create(task_params)
+      binding.pry
       if @task.save 
           redirect_to new_site_task_path(@task)
       else 
@@ -46,6 +47,6 @@ class TasksController < ApplicationController
     private 
     
     def task_params
-        params.require(:task).permit(:name, :user_id, site_ids:[])
+        params.require(:task).permit(:name, :user_id, site_ids:[], site_attributes: [:name])
     end
 end

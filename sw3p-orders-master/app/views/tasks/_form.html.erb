@@ -5,6 +5,6 @@
     <%= f.label :status_report %><br>
     <%= f.text_field :status_report %><br>
     <%= f.label :site %><br>  
-    <%= f.collection_check_boxes :site_ids, Site.all, :id, :name %><br><!-- creates new site instead here -- > 
-<%= f.submit 'create task' %>
+    <%= f.collection_check_boxes :site_ids, Site.all, :id, :name %><br>
+<%= f.submit %>
 <% end %>
