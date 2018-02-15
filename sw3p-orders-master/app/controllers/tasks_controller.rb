@@ -10,15 +10,16 @@ class TasksController < ApplicationController
       binding.pry
       @task = Task.create(task_params)
       binding.pry
-      if @task.save 
-          redirect_to site_task_path(@task)
+      if @task.save
+          @task.id= @task
+          redirect_to '/site/:id/task/:id'
       else 
         render :new 
       end 
     end 
     def index
         if params[:user_id]
-            @tasks = User.find(params[:user_id]).tasks
+            @tasks = User.find(params[:user_id]).tasks#needs revision for User!=Many Tasks
         end
     end
     
@@ -48,6 +49,6 @@ class TasksController < ApplicationController
     private 
     
     def task_params
-        params.require(:task).permit(:name, :user_id, :deadline, :status_report, site_ids:[], site_attributes: [:name])
+        params.require(:task).permit(:id, :name, :user_id, :deadline, :status_report, site_ids:[], site_attributes: [:name])
     end
 end

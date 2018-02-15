@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'#Crud = 'Post data from login page to Create new record'
   delete '/logout',   to: 'sessions#destroy'
   post "sites/:id/orders/:id", to: 'orders#update'
+  get '/site/:id/task/:id', to: 'tasks#show'
   resources :sites, only: [:index, :new, :create, :show] do 
     resources :orders,only: [:new, :create, :show, :index, :edit, :update, :add_comment, :add_some_comments] 
   end
