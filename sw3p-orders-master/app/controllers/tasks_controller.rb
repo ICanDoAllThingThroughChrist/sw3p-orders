@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
-  before_action :logged_in?, only: [:new, :show, :edit, :update, :destroy] 
+  before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy] 
     def new
           @user = current_user
           @task = Task.new
+          @task.user_id= @user.id
           binding.pry
     end
     def create
@@ -10,7 +11,7 @@ class TasksController < ApplicationController
       @task = Task.create(task_params)
       binding.pry
       if @task.save 
-          redirect_to new_site_task_path(@task)
+          redirect_to site_task_path(@task)
       else 
         render :new 
       end 
@@ -47,6 +48,6 @@ class TasksController < ApplicationController
     private 
     
     def task_params
-        params.require(:task).permit(:name, :user_id, site_ids:[], site_attributes: [:name])
+        params.require(:task).permit(:name, :user_id, :deadline, :status_report, site_ids:[], site_attributes: [:name])
     end
 end

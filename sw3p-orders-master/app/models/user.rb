@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :orders
   #has_many :user_sites
   #has_many :sites, through: :user_sites
-  #belongs_to :task
+  #has_many :tasks
   # has_many :tasks, through: :sitetasks
   #accepts_nested_attributes_for :task
   # accepts_nested_attributes_for :task
