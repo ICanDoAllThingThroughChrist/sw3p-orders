@@ -1,4 +1,36 @@
 <h1> new order </h1>
 <%= form_for (@order), url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-<%= render "form" %>
+<%#= render "form" %>
+<div>
+  <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :site_id %> 
+    </div>
+    <div class="field">
+      <%= f.label :task %><br>
+      <%= f.select :task, ['task1', 'task2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :frequency %><br>
+      <%= f.select :frequency, ['freqs1', 'freqs2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :deadline %><br>
+      <%= f.select :deadline, ['deadline1', 'deadline2'] %><br>
+    </div>
+    <div class="field">
+      <%= f.label :status %><br>
+      <%= f.select :status, ['status1', 'status2'] %><br>
+    </div>
+     <%# binding.pry %>
+    <%#b/c string value of comments during update as opposed to hash during create
+    , this field'll not appear in order#update call, unless @order.comments.build is called%>
+       <div class="field">
+            <%= f.fields_for :comments, @order.comments.build do |comments_fields|%>
+            <%= comments_fields.label :comment %><br>
+            <%= comments_fields.text_field :comment %><br>
+            <%= comments_fields.label :comment_is_related_to_which_task? %><br>
+            <%= comments_fields.text_field :task %><br>
+       </div>
+       <% end %>
+  <%= f.submit %>
 <% end %>

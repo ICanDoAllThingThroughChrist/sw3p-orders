@@ -1,18 +1,20 @@
 class TasksController < ApplicationController
-  before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy] 
+  before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy]
+  #params[:id]= @task.id
     def new
           @user = current_user
           @task = Task.new
           @task.user_id= @user.id
-          binding.pry
+          #binding.pry
     end
     def create
+      #raise.params.inspect
       binding.pry
       @task = Task.create(task_params)
       binding.pry
       if @task.save
-          @task.id= @task
-          redirect_to '/site/:id/task/:id'
+          params[:id]= @task.id
+          redirect_to site_task_path(@task.sites)
       else 
         render :new 
       end 
@@ -24,7 +26,7 @@ class TasksController < ApplicationController
     end
     
     def show
-        @task = Task.find(params[:id])
+       @task = Task.find(@task.id)
     end
      
     def edit

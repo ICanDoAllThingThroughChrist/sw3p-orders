@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
         #binding.prqy
         @user = current_user 
         @order = @user.orders.build
+        binding.pry
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
         @comment = Comment.all
     end 
