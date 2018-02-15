@@ -1,5 +1,11 @@
 class TasksController < ApplicationController
   before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy]
+  attr_accessor :paramsid
+   
+    def paramsid
+        @task = Task.find_by(params[:id])
+        params[:id]= @task.id
+    end
   #params[:id]= @task.id
     def new
           @user = current_user
@@ -12,10 +18,11 @@ class TasksController < ApplicationController
       #raise.params.inspect
       #binding.pry
       @task = Task.create(task_params)#task params called missing column tasks.site_ids
+      self.paramsid
       binding.pry
       if @task.save
-          params[:id]= @task.id
-          binding.pry
+          self.paramsid
+          #binding.pry
           redirect_to site_tasks_url
       else 
         render :new 
@@ -30,7 +37,10 @@ class TasksController < ApplicationController
     end
     
     def show
-       @task = Task.find(@task.id)
+       @tasks = Task.all
+       @site = Site.find_by(params[:site_id])
+       self.paramsid
+       @task = Task.find(params[:id])
     end
      
     def edit

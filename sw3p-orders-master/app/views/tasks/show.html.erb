@@ -1,15 +1,6 @@
-<h1><%= @task.name %></h1>
-<p>by <%= link_to @task.user.name, user_path(@task.user) if @task.user %> (<%= link_to "Edit Post", edit_user_task_path(@task.user, @task) if @task.user %>)</p>
-<p>Last updated:<%= last_updated @task %></p>
-
-<h2><%= @user.name %></h2>
-<%= link_to "New Task", new_user_task_path(@user) %>
- 
-<p>Tasks:</p>
-<% @user.tasks.each do |task| %>
-  <div><%= task.name %></div>
-<% end %>
-
+<h3>ID:<%= @task.id %></h3>
+<h3>occurrence:<%= @task.occurrence %></h3>
+<h3>deadline:<%= @task.deadline %></h3>
 <p>Site Tasks:</p>
   <% @task.sitetasks.each do |sitetask| %>
     <%= link_to sitetask.site.name, site_path(sitetask.site) %>
