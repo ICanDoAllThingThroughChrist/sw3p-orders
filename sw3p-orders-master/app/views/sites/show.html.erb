@@ -1,8 +1,17 @@
-<h2><%= @site.name %> </h2> has following tasks: 
+<fieldset>
+<h2><%= @site.name %> </h2> has following orders: 
 <% @site.orders.each do |order| %>
 <li><%= link_to order.task, site_order_path(@site, order), method: :get %></li>
   <%# binding.pry %>
 <% end %>
 <p><%= link_to 'create a new order for site and task', new_site_order_path(@site) %></p>
+</fieldset>
+<fieldset>
+<h2><%= @site.name %> </h2> has following tasks: 
+<% @site.tasks.each do |task| %>
+<li><%= link_to task.id, site_task_path(@site, task), method: :get %></li>
+  <%# binding.pry %>
+<% end %>
 <p><%= link_to 'create a new task for the site', new_site_task_path(@site) %></p>
+</fieldset>
 <% binding.pry %>
