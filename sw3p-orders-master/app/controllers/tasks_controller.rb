@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy]
   attr_accessor :paramsid
-   
     def paramsid
         @task = Task.find_by(params[:id])
         params[:id]= @task.id
@@ -44,20 +43,17 @@ class TasksController < ApplicationController
     end
      
     def edit
-      if params[:user_id]
-        user = User.find_by(id: params[:user_id])
-        if user.nil?
-          redirect_to user_path, alert: "User not found."
-        else
-          @task = user.tasks.find_by(id: params[:id])
-          redirect_to user_tasks_path(user), alert: "Task not found." if @task.nil?
-        end
+      if current_user
+          self.paramsid
+          @task = Task.find(params[:id])
+          redirect_to edit_site_task
       else
-        @task = Task.find(params[:id])
+          redirect_to site_tasks
       end
     end
   
     def update
+      self.paramsid
       @task = Task.find(params[:id])
       authorize @task
     # perform an update
