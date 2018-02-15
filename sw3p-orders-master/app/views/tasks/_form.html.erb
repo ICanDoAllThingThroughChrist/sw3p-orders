@@ -1,6 +1,10 @@
-<%= form_for(@task) do |f| %>
-  <label>Task name:</label><br>
-  <%= f.hidden_field :user_id %>
-  <%= f.text_field :name %><br>
-  <%= f.submit %>
+<%= form_for (@task), url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.label :deadline %><br>
+    <%= f.text_field :deadline %><br>
+    <%= f.label :status_report %><br>
+    <%= f.text_field :status_report %><br>
+    <%= f.label :site %><br>  
+    <%= f.collection_check_boxes :site_ids, Site.all, :id, :name %><br><!-- creates new site instead here -- > 
+<%= f.submit 'create task' %>
 <% end %>

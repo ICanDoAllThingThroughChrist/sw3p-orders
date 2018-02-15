@@ -1,2 +1,4 @@
 <h1> new order </h1>
-<%= render "layouts/form" %>
+<%= form_for (@order), url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+<%= render "form" %>
+<% end %>

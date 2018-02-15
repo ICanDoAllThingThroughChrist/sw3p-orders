@@ -6,6 +6,7 @@ class Task < ApplicationRecord
     #belongs_to :user
     has_many :sitetasks
     has_many :sites, through: :sitetasks
+    accepts_nested_attributes_for :sites
 
     def self.by_user(user_id)
         where(user: user_id)

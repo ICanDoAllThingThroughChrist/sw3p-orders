@@ -1,10 +1,2 @@
-<%= render "layouts/errors", :object => @site %>  
-<%= form_for @task, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-    <%= f.hidden_field :user_id %>
-    <%= f.label :site %><br>
-    <%= f.fields_for :sites, @task.sites.each do |site| %>
-        <%= site.label :name %>
-        <%= site.collection_select(:sites,Site.all,:id, :name, {:selected => @site.task_ids, :include_blank => true}, {:multiple => true}) %><br>
-        <% end %>
-    <% end %>
-<%= f.submit 'create task' %>
+<%= render "layouts/errors", :object => @task %>  
+<%= render "form" %>
