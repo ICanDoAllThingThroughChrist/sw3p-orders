@@ -9,8 +9,9 @@
 <fieldset>
 <h2><%= @site.name %> </h2> has following tasks: 
 <% @site.tasks.each do |task| %>
-<li><%= link_to task.id, site_task_path(@site, task), method: :get %></li>
-  <%# binding.pry %>
+<% taskid = task.id%>
+<li><%= link_to taskid, site_task_path(@site, task), method: :get %></li>
+  <% binding.pry %>
 <% end %>
 <p><%= link_to 'create a new task for the site', new_site_task_path(@site) %></p>
 </fieldset>

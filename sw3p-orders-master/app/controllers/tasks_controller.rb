@@ -7,9 +7,9 @@ class TasksController < ApplicationController
     end
   #params[:id]= @task.id
     def new
-          @user = current_user
           @task = Task.new
           #@task = Task.create#tried create to solve missing [:id] in params by saving records, but
+          @user= current_user
           @task.user_id= @user.id
           binding.pry
     end
@@ -21,7 +21,7 @@ class TasksController < ApplicationController
       binding.pry
       if @task.save
           self.paramsid
-          #binding.pry
+          binding.pry
           redirect_to site_tasks_url
       else 
         render :new 
@@ -31,14 +31,15 @@ class TasksController < ApplicationController
         binding.pry
         if current_user
           binding.pry
-            @tasks = Task.all#needs revision for User!=Many Tasks
+          @site = Site.find(params[:site_id])
+          @tasks = @site.tasks#needs revision for User!=Many Tasks
         end
     end
     
     def show
        @tasks = Task.all
        @site = Site.find_by(params[:site_id])
-       self.paramsid
+       #self.paramsid
        @task = Task.find(params[:id])
     end
      
@@ -53,9 +54,9 @@ class TasksController < ApplicationController
     end
   
     def update
-      self.paramsid
-      @task = Task.find(params[:id])
-      authorize @task
+        self.paramsid
+        @task = Task.find(params[:id])
+        authorize @task
     # perform an update
     end
     private 
