@@ -2,6 +2,9 @@ class SitesController < ApplicationController
     before_action :logged_in?, only: [:new, :create, :index, :show]
     def index
         @site = Site.all
+        task_ids = Task.all
+        @site_filtered_task = Site.filter_by_task(task_ids)
+        binding.pry
     end
     def new 
         @site = Site.find(params[:site_id])

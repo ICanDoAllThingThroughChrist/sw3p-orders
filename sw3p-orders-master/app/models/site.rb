@@ -5,6 +5,11 @@ class Site < ApplicationRecord #Class Survey
     has_many :sitetasks
     has_many :tasks, through: :sitetasks
     accepts_nested_attributes_for :tasks
+
+    def self.filter_by_task(task_ids)  
+        Site.select{|site| (task_ids - site.task_ids).empty?}
+    end
+    
     def tasks_attributes=(task_attributes)
         binding.pry
         task_attributes.each do |key, value|
