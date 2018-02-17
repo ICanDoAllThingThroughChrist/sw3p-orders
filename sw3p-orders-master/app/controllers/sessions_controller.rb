@@ -9,9 +9,18 @@ class SessionsController < ApplicationController
         u.name = auth['info']['name']
         u.email = auth['info']['email']
         u.image = auth['info']['image']
+        u.id = auth['uid']
+        binding.pry
       end
+      #binding.pry
       session[:user_id] = @user.id
+      session[:email] = @user.email
+      #@user = User.find_by(email: [:session][:email].downcase)
+      binding.pry
+      log_in @user
+      binding.pry  
       render 'welcome/home'
+      binding.pry
     end
 
     def create

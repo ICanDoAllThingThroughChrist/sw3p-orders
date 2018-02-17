@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
-    #helper_method :params
-   
+    helper_method :params
+    attr_accessor :paramsid
+    def paramsid
+        @order = Order.find_by(params[:id])
+        params[:id]= @order.id
+    end
     def new 
         @site = Site.find(params[:site_id])
         #binding.prqy
