@@ -23,7 +23,7 @@
     <%#b/c string value of comments during update as opposed to hash during create
     , this field'll not appear in order#update call, unless @order.comments.build is called%>
     <div class="field">
-            <%= f.label :comment_names, "Comments (space separated)" %><br />
+            <%= f.label :comment_names, "list-associated-task-tags (space separated)" %><br />
             <%= f.text_field :comment_names%>
     </div>
   <%= f.submit %>

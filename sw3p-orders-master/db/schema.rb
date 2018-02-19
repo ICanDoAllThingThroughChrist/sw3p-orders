@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215145255) do
+ActiveRecord::Schema.define(version: 20180219211853) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -114,11 +114,11 @@ ActiveRecord::Schema.define(version: 20180215145255) do
     t.integer "price"
     t.integer "inventory"
     t.integer "user_id"
-    t.boolean "task_status"
     t.integer "order_id"
     t.string "status_report"
     t.string "deadline"
     t.string "occurrence"
+    t.string "task_status"
   end
 
   create_table "user_sites", force: :cascade do |t|
