@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+application description
+an application that:
+1.Create an Order and its comments, scoped to a site
+2.Update an Order and its comment, scoped to a site
+3.Create a Task, scoped to a site
+4.Update a Task, scoped to a site
+5.Filter Index of Tasks by its deadlines(December 2018, June 2018), or its status(in progress, completed)
+6.Has an authentication system
+7.
 
-Things you may want to cover:
+installation
+Fork and clone the repo
 
-* Ruby version
+Contrbutors guide
+file an issue
 
-* System dependencies
+Licensing Requirements
+This project has been licensed under the MIT open source license. 
+    link:https://opensource.org/licenses/MIT
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
