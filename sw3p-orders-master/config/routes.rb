@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # resources :sitetasks, only: [:show, :create]
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create2'
+  get '/tasks' => 'tasks#index'
   resources :sessions
   resources :users, only: [:show, :index, :new] 
   # resources :users, only: [:show] do

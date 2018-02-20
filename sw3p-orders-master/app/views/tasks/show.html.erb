@@ -2,7 +2,7 @@
 <h3>ID: <%= @taskid %></h3>
 <h3>occurrence:<%= @task.occurrence %></h3>
 <h3>deadline:<%= @task.deadline %></h3>
-<p>Site Tasks List Link:</p>
+<p>Tasks List Per Site Link:</p>
   <% @task.sitetasks.each do |sitetask| %>
     <%= link_to sitetask.site.name, site_tasks_path %>
   <% end %>

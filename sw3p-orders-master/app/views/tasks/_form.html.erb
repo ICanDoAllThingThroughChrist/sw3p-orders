@@ -1,5 +1,7 @@
 <%= form_for (@task), url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <%= f.hidden_field :user_id %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
     <%= f.label :deadline %><br>
     <%= f.text_field :deadline %><br>
     <%= f.label :status_report %><br>

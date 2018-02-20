@@ -23,10 +23,11 @@ class OrdersController < ApplicationController
         binding.pry
         if @order.save
             binding.pry
+            flash[:notice]  = "order saved"
             redirect_to site_orders_url
         else
             binding.pry
-            flash.now[:error] = "Could not save order"
+            flash[:notice]  = "Could not save order"
             redirect_to site_orders_url 
         end
     end 

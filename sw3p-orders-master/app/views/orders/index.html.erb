@@ -45,11 +45,6 @@ table#t01 th {
     <% if !params[:order].blank? %>
     <% @orders = Order.where(id: params[:order][:id]) %>
     <% end %>
-  <h4>Filter Orders:</h4>
-  <%= form_tag("/orders", method: "get") do%>
-  <%= select_tag "Order", options_from_collection_for_select(Order.all, "id", "id"), include_blank: true%>
-  <%= submit_tag "Filter"%>
-  <% end %>
   </div>
   <tr><% @orders.each do |order| %></tr>
     <% orderid = order.id %>
@@ -64,7 +59,7 @@ table#t01 th {
         <% end %></td>
     <%# binding.pry %>
         <%# binding.pry %>
-        <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
+    <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
     <% end %>
   </table>
 </body>

@@ -6,7 +6,17 @@ class Order < ApplicationRecord #Class Survey
     belongs_to :site#
     has_many :ordercomments
     has_many :comments, through: :ordercomments #questions
+    scope :task1, -> {where(name: 'task1')}
+    scope :task1, -> {where(name: 'task2')}
     accepts_nested_attributes_for :comments, allow_destroy: true
+    def self.task1
+        where(name: 'task1')
+    end
+    
+    def self.task2
+        where(name: 'task2')
+    end
+        
     def save_comment_names
         if @comment_names 
             binding.pry

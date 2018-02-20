@@ -1,0 +1,12 @@
+<fieldset>
+<h4> task info </h4> 
+<% binding.pry %>
+<% @taskcomplete.each do |task| %>
+    <% taskid = task.id%>
+    <% "ID: #{taskid}" %><br>
+    <%= "name: #{task.name}" %><br>
+    <%= "deadline: #{task.deadline}"%><br>
+    <% binding.pry %>
+    <% end %>
+<% binding.pry %>
+</fieldset>

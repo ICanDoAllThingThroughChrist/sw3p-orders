@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   before_action :logged_in?, only: [:new, :create, :show, :edit, :update, :destroy]
   attr_accessor :paramsid
-    def paramsid
-        @task = Task.find_by(params[:id])
-        params[:id]= @task.id
-    end
   #params[:id]= @task.id
     def new
           @task = Task.new
@@ -13,6 +9,11 @@ class TasksController < ApplicationController
           @task.user_id= @user.id
           binding.pry
     end
+    # def paramsid
+    #     binding.pry
+    #     @task = Task.find(params[:id])
+    #     params[:id]= @task.id
+    # end
     def create
       #raise.params.inspect
       #binding.pry
@@ -29,23 +30,47 @@ class TasksController < ApplicationController
     end 
     def index
         binding.pry
-        if current_user
+        @site= Site.find(params[:site_id])
+        @tasks= @site.tasks#needs revision for User!=Many Tasks
+        counter = 0
+        if current_user #https://ruby-doc.org/core-2.1.4/doc/syntax/control_expressions_rdoc.html
           binding.pry
-          @site= Site.find(params[:site_id])
-          @tasks= @site.tasks#needs revision for User!=Many Tasks
-          @taskdec18= @tasks.december_2018
-          @taskjun18= @tasks.june_2018
-          # filter the @tasks list based on user input
-        elsif !params[:deadline].blank?#https://learn.co/tracks/full-stack-web-development-v3/rails/refactoring-with-helpers-and-model-methods/model-class-methods
+           # filter the @tasks list based on user input
+          #binding.pry
+            if !params[:deadline].blank?#https://learn.co/tracks/full-stack-web-development-v3/rails/refactoring-with-helpers-and-model-methods/model-class-methods
+                binding.pry
                 if params[:deadline] == "December 2018"
+                    @site= Site.find(params[:site_id])
+                    @tasks= @site.tasks#needs revision for User!=Many Tasks
+                    @taskdec18= @tasks.december_2018
                     @taskdec18
+                    render :file => 'app/views/tasks/taskdec18.html.erb'
                 else
+                    @site= Site.find(params[:site_id])
+                    @tasks= @site.tasks#needs revision for User!=Many Tasks
+                    @taskjun18= @tasks.june_2018
                     @taskjun18
+                    render :file => 'app/views/tasks/taskjune18.html.erb'
                 end
-        else
+            elsif !params[:task_status].blank?
+            binding.pry
+                if params[:task_status] == "in progress"
+                    @site= Site.find(params[:site_id])
+                    @tasks= @site.tasks#needs revision for User!=Many Tasks
+                    @taskinprogress= @tasks.in_progress
+                    @taskinprogress
+                    render :file => 'app/views/tasks/taskinprogress.html.erb'
+                else
+                    @site= Site.find(params[:site_id])
+                    @tasks= @site.tasks#needs revision for User!=Many Tasks
+                    @taskcompleted= @tasks.completed
+                    @taskcompleted
+                    render :file => 'app/views/tasks/taskcomplete.html.erb'
+                end 
                 # if no filters are applied, show all posts
+            else
                 @tasks#
-          
+            end
         end
     end
     
