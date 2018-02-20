@@ -31,8 +31,21 @@ class TasksController < ApplicationController
         binding.pry
         if current_user
           binding.pry
-          @site = Site.find(params[:site_id])
-          @tasks = @site.tasks#needs revision for User!=Many Tasks
+          @site= Site.find(params[:site_id])
+          @tasks= @site.tasks#needs revision for User!=Many Tasks
+          @taskdec18= @tasks.december_2018
+          @taskjun18= @tasks.june_2018
+          # filter the @tasks list based on user input
+        elsif !params[:deadline].blank?#https://learn.co/tracks/full-stack-web-development-v3/rails/refactoring-with-helpers-and-model-methods/model-class-methods
+                if params[:deadline] == "December 2018"
+                    @taskdec18
+                else
+                    @taskjun18
+                end
+        else
+                # if no filters are applied, show all posts
+                @tasks#
+          
         end
     end
     

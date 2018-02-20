@@ -1,4 +1,9 @@
 <% binding.pry %>
+<%= form_tag("/tasks", method: "get") do %>
+    <%= select_tag "deadline", options_for_select(["December 2018", "June 2018"]), include_blank: true %>
+    <%= select_tag "task_status", options_for_select(["in progress", "completed"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+<% end %>
 <% @tasks.each do |task| %>
   <div>
     task id: <%= task.id %> <br>

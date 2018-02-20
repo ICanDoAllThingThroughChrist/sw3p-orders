@@ -7,6 +7,7 @@ class Task < ApplicationRecord
     has_many :sitetasks
     has_many :sites, through: :sitetasks
     accepts_nested_attributes_for :sites
+    scope :completed, -> {where(task_status: 'completed')}
     scope :in_progress, -> {where(task_status: 'in_progress')}
     scope :december_2018, -> {where(deadline: 'December 2018')}
     scope :june_2018, -> {where(deadline: 'June 2018')}
@@ -23,6 +24,10 @@ class Task < ApplicationRecord
     #     where('created_at < :beginning_of_day',
     #     :beginning_of_day  => Time.zone.today)
     # end
+
+    def self.completed
+        where(task_status: 'completed')
+    end
     
     def self.in_progress
         where(task_status: 'in_progress')

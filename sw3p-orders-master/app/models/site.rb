@@ -4,6 +4,7 @@ class Site < ApplicationRecord #Class Survey
     accepts_nested_attributes_for :orders
     has_many :sitetasks
     has_many :tasks, through: :sitetasks
+    #http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html
     accepts_nested_attributes_for :tasks
     def self.ne 
         where(name: 'NE')
