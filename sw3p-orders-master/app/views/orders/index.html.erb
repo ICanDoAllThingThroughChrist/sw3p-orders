@@ -46,20 +46,25 @@ table#t01 th {
     <% @orders = Order.where(id: params[:order][:id]) %>
     <% end %>
   </div>
-  <tr><% @orders.each do |order| %></tr>
-    <% orderid = order.id %>
-    <td><%= order.id%></td>
-    <td><%= order.task %></td>
-    <td><%= order.frequency %></td>
-    <%# binding.pry  %>
-        <% if order.site != nil %>
-            <td><%= order.site.name %></td>
-        <% else %>
-            <td><%= "'no site selected'" %></td>
-        <% end %></td>
-    <%# binding.pry %>
+  <% if @orders != nil %>
+    <tr><% @orders.each do |order| %></tr>
+        <% orderid = order.id %>
+        <td><%= order.id%></td>
+        <td><%= order.task %></td>
+        <td><%= order.frequency %></td>
+        <%# binding.pry  %>
+            <% if order.site != nil %>
+                <td><%= order.site.name %></td>
+            <% else %>
+                <td><%= "'no site selected'" %></td>
+            <% end %></td>
         <%# binding.pry %>
-    <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
+            <%# binding.pry %>
+        <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
+        <% end %>
+    <% else %>
+        <%= flash[:notice]: "no orders are in the db" %>
+        <% redirect_to site_orders_url %>
     <% end %>
   </table>
 </body>

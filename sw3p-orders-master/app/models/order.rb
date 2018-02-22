@@ -52,6 +52,7 @@ class Order < ApplicationRecord #Class Survey
                         binding.pry
                         new_comment3= Comment.create(comment: new_comment2)
                         self.comments << new_comment3
+                        binding.pry
                     end 
                end
            end 
