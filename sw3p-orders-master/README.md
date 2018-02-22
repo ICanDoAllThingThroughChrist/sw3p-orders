@@ -1,7 +1,7 @@
 # README
 
 application description\
-an application that:\
+An application that:\
 1.Create an Order and its comments, scoped to a site\
 2.Update an Order and its comment, scoped to a site\
 3.Create a Task, scoped to a site\
@@ -11,13 +11,13 @@ or its status(in progress, completed)\
 6.Has an authentication system
 
 
-installation\
+Installation\
 Fork and clone the repo
 
 Contrbutors guide\
-file an issue
+File an issue
 
 Licensing Requirements\
 This project has been licensed under the MIT open source license. 
-    link:https://opensource.org/licenses/MIT\
+    Link:https://opensource.org/licenses/MIT\
 
