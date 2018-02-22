@@ -72,6 +72,12 @@ class OrdersController < ApplicationController
             render 'edit'
          end 
     end
+    def destroy
+        @order = Order.find(params[:id]) 
+        @order.destroy
+        flash[:success] = "Order Deleted"
+        render :index 
+    end 
  
     private 
     def order_params
