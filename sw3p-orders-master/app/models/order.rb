@@ -38,22 +38,15 @@ class Order < ApplicationRecord #Class Survey
                 self.comments << new_comment 
             else 
                if !value[:comment].empty?
-                    if new_comment= Comment.find_by(comment: value[:comment])
-                        binding.pry
-                        a= []
-                        self.comments.each {|comment| a << "#{comment.comment}"}
-                        b= a.join(" ,")
-                        self.comments << Comment.create(comment: b) 
-                    else
                         binding.pry
                         new_comment = Comment.create(comment: value[:comment])
                         self.comments << new_comment
-                        new_comment2= self.comments.pluck(:comment).join(' ')
                         binding.pry
-                        new_comment3= Comment.create(comment: new_comment2)
-                        self.comments << new_comment3
+                        a= []
+                        self.comments.each {|comment| a << "#{comment.comment}"}
+                        b= a.join( )
+                        self.comments << Comment.create(comment: b) 
                         binding.pry
-                    end 
                end
            end 
         end

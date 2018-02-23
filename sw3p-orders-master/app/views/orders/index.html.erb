@@ -63,7 +63,7 @@ table#t01 th {
         <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
         <% end %>
     <% else %>
-        <%= flash[:notice]: "no orders are in the db" %>
+        <h3><% "no orders are in the db" %></h3>
         <% redirect_to site_orders_url %>
     <% end %>
   </table>

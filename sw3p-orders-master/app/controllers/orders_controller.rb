@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
-    helper_method :params
-    attr_accessor :paramsid
+    protect_from_forgery prepend: true
+    #protect_from_forgery with: :exception
+    #helper_method :params
+    #attr_accessor :paramsid
     def paramsid
         @order = Order.find_by(params[:id])
         params[:id]= @order.id
