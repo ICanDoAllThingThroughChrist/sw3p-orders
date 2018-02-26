@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219211853) do
+ActiveRecord::Schema.define(version: 20180226221648) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180219211853) do
     t.integer "deadline_id"
     t.integer "frequencie_id"
     t.string "status"
+    t.string "attachment"
   end
 
   create_table "sites", force: :cascade do |t|
