@@ -12,7 +12,7 @@ class Order < ApplicationRecord #Class Survey
     accepts_nested_attributes_for :comments, allow_destroy: true
     has_many :attachments, dependent: :destroy
     accepts_nested_attributes_for :attachments, reject_if: :all_blank
-    mount_uploader :attachment, AttachmentUploader
+    # mount_uploader :attachment, AttachmentUploader
     def self.task1
         where(name: 'task1')
     end

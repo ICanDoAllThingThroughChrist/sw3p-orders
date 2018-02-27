@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226221648) do
+ActiveRecord::Schema.define(version: 20180227155304) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "file"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_attachments_on_order_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -83,7 +91,6 @@ ActiveRecord::Schema.define(version: 20180226221648) do
     t.integer "deadline_id"
     t.integer "frequencie_id"
     t.string "status"
-    t.string "attachment"
   end
 
   create_table "sites", force: :cascade do |t|

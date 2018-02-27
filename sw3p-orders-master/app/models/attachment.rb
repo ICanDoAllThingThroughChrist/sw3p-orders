@@ -1,3 +1,4 @@
 class Attachment < ApplicationRecord
-    mount_uploader :attachment, AttachmentUploader
-end 
+  belongs_to :order
+  mount_uploader :file, AttachmentUploader
+end

@@ -32,10 +32,9 @@
   <%= comments_fields.text_field :task %><br>
   <% end %>
     </div>
-  <h3>Attachment</h3>
-  <%= f.fields_for :attachments do |ff| %>
-  <%= ff.input :file, as: :file, label: "File##{ff.index + 1}" %>
-  <%= ff.input :file_cache, as: :hidden %>
-  <% end %>
+  <%#= f.fields_for :attachments, child_index: index do |ff| %>
+  <%#= ff.file_field :file, as: :file, label: "File##{ff.index + 1}" %>
+  <%#= ff.file_field :file_cache, as: :hidden %>
+  <%# end %>
   <%= f.submit %>
-  <% end %>
+  <%# end %>
