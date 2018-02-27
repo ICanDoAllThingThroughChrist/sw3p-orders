@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227190707) do
+ActiveRecord::Schema.define(version: 20180227211203) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "file"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20180227190707) do
     t.integer "deadline_id"
     t.integer "frequencie_id"
     t.string "status"
+    t.string "attachment"
   end
 
   create_table "orders_attachments", id: false, force: :cascade do |t|

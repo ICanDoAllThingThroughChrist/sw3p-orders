@@ -10,9 +10,9 @@ class Order < ApplicationRecord #Class Survey
     scope :task1, -> {where(name: 'task1')}
     scope :task1, -> {where(name: 'task2')}
     accepts_nested_attributes_for :comments, allow_destroy: true
-    has_many :attachments, dependent: :destroy
-    accepts_nested_attributes_for :attachments, reject_if: :all_blank
-    # mount_uploader :attachment, AttachmentUploader
+    # has_many :attachments, dependent: :destroy
+    # accepts_nested_attributes_for :attachments, reject_if: :all_blank
+    mount_uploader :attachment, AttachmentUploader#https://github.com/carrierwaveuploader/carrierwave
     def self.task1
         where(name: 'task1')
     end

@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
         binding.pry
         @order.site = @site#@supplier.account = @account, http://guides.rubyonrails.org/v2.3.11/association_basics.html
         @comment = Comment.all
-        3.times {@order.attachments.build}
+        #3.times {@order.attachments.build}
     end 
 
     def create
@@ -84,7 +84,7 @@ class OrdersController < ApplicationController
  
     private 
     def order_params
-        params.require(:order).permit(:id, :which_comment, :site_id, :user_id,
+        params.require(:order).permit(:file, :attachment, :attachment_cache, :id, :which_comment, :site_id, :user_id,
         :task, :site, :deadline, :frequency, :comment_names,
         :new_comment, :status,:comments_attributes => [:id, :comment_id, :comment, :task, :names], 
         :attachment_attributes => [:file, :file_cache])#https://stackoverflow.com/questions/19270518/edit-nested-in-a-form

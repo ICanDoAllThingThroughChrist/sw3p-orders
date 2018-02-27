@@ -3,7 +3,6 @@ class CreateAttachments < ActiveRecord::Migration[5.1]
     create_table :attachments do |t|
       t.string :file
       t.references :order, foreign_key: true
-
       t.timestamps
     end
   end

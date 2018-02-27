@@ -3,20 +3,17 @@
 <h4><%= "order's task: #{@order.task}" %></h4>
 <% @orderid = @order.id%>
 <p><%= "order ID:#{@orderid}"%></p>
-    <% if @order.attachments.any? %>
-    <%#!-- When you call any?, it calls the ActiveRecord::Base association method, which
-    checks whether there are any attachments on a ticket and returns true if there are
-    http://railscasts.com/episodes/253-carrierwave-file-uploads?view=asciicast%>
-        <h4>Attachment</h4?
+<% binding.pry %>
+    <% if @order.attachment.present? %>
+        <h4>Attachment</h4>
         <div class="attachment">
-        <% @order.attachments.each do |attachment| %>
         <p>
-        <%= link_to File.basement(@order.attachment.url),
+        <% binding.pry %>
+        <%= link_to File.basename(@order.attachment.url),
         @order.attachment.url %>
         (<%=number_to_human_size(@order.attachment.size)%>)
         </p>
-        <% end %>
-        </div>
+         </div>
     <% end %>
 <p> 
 <%= link_to "Edit Existing or Create Order", edit_site_order_path(@order) %>|</br>
