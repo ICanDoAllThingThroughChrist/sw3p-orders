@@ -1,7 +1,7 @@
-    <%= form_for @order do |f| %>
+    <%= form_for @order, :html => {:multipart => true}  do |f| %>
     <div>
     <%= f.hidden_field :user_id %>
-    <%= f.hidden_field :site_id %> 
+    <%= f.hidden_field :site_id %>
     </div>
     <div class="field">
       <%= f.label :task %><br>
@@ -24,17 +24,17 @@
     , this field'll not appear in order#update call, unless @order.comments.build is called%>
             <%#= f.label :comment_names, "list-associated-task-tags (space separated)" %><br />
             <%#= f.text_field :comment_names%>
-    <div class="field">	
-<%= f.fields_for :comments, @order.comments.build do |comments_fields|%>	
-  <%= comments_fields.label :comment %><br>	
-  <%= comments_fields.text_field :comment %><br>	
-  <%= comments_fields.label :comment_is_related_to_which_task? %><br>	
-  <%= comments_fields.text_field :task %><br>		
+    <div class="field">
+<%= f.fields_for :comments, @order.comments.build do |comments_fields|%>
+  <%= comments_fields.label :comment %><br>
+  <%= comments_fields.text_field :comment %><br>
+  <%= comments_fields.label :comment_is_related_to_which_task? %><br>
+  <%= comments_fields.text_field :task %><br>
   <% end %>
     </div>
   <h3>Attachment</h3>
   <%= f.fields_for :attachments do |ff| %>
-  <%= ff.input :file, as: :file, label: "File##{ff.index + 1}"" %>
+  <%= ff.input :file, as: :file, label: "File##{ff.index + 1}" %>
   <%= ff.input :file_cache, as: :hidden %>
   <% end %>
   <%= f.submit %>

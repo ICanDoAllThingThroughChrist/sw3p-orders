@@ -2,6 +2,7 @@ class Order < ApplicationRecord #Class Survey
     #before_save :save_comment_names
     #attr_accessor :comment_names
     #attr_writer :comment_names
+    attr_accessor :attachment
     belongs_to :user
     belongs_to :site#
     has_many :ordercomments
@@ -11,6 +12,7 @@ class Order < ApplicationRecord #Class Survey
     accepts_nested_attributes_for :comments, allow_destroy: true
     has_many :attachments, dependent: :destroy
     accepts_nested_attributes_for :attachments, reject_if: :all_blank
+    mount_uploader :attachment, AttachmentUploader
     def self.task1
         where(name: 'task1')
     end

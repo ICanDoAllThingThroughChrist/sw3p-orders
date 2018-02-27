@@ -5,7 +5,8 @@
 <p><%= "order ID:#{@orderid}"%></p>
     <% if @order.attachment.any? %>
     <%#!-- When you call any?, it calls the ActiveRecord::Base association method, which
-    checks whether there are any attachments on a ticket and returns true if there are%>
+    checks whether there are any attachments on a ticket and returns true if there are
+    http://railscasts.com/episodes/253-carrierwave-file-uploads?view=asciicast%>
     <h4>Attachment</h4?
     <div class="attachment">
     <% @order.attachments.each do |attachment| %>
