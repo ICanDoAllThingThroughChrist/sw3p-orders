@@ -34,8 +34,8 @@ table#t01 th {
    tr    { page-break-inside:avoid; page-break-after:auto }
 </style>
 <%= form_tag(orders_url, method: "get") do %>
-    <%= select_tag "task", options_for_select(["task1", "task2"]), include_blank: true %>
-    <%= select_tag "site_name", options_for_select(["NE", "NW", "SW", "SE", "NW_Transfer_Station","SW_Transfer_Station", "SE_Transfer_Station" ]), include_blank: true %>
+    <div>tasks_list:</div><%= select_tag "task", options_for_select(["task1", "task2"]), include_blank: true %><br>
+    <div>sites_list:</div><%= select_tag "site_name", options_for_select(["NE", "NW", "SW", "SE", "NW_Transfer_Station","SW_Transfer_Station", "SE_Transfer_Station" ]), include_blank: true %><br>
     <%= submit_tag "Filter" %>
 <% end %>
   <tr>
@@ -54,31 +54,31 @@ table#t01 th {
     <% end %>
   </div>
   <% if @orders != nil %>
-    <tr><% @orders.each do |order| %></tr>
-        <% orderid = order.id %>
-        <td><%= orderid%></td>
-        <td><%= order.task %></td>
-        <td><%= order.frequency %></td>
-        <%# binding.pry  %>
-            <% if order.site != nil %>
-                <td><%= order.site.name %></td>
-            <% else %>
-                <td><%= "'no site selected'" %></td>
-            <% end %></td>
-        <%# binding.pry %>
-            <%# binding.pry %>
-        <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
-        <% if order.attachment.present? %>
-        <div class="attachment">
-        <p>
-            <% binding.pry %>
-            <td><%= link_to File.basename(order.attachment.url),
-            order.attachment.url %></td>
-            <td><%=number_to_human_size(order.attachment.size)%></td>
-            </p>
-         </div>
-    <% end %>
-        <% end %>
+        <tr><% @orders.each do |order| %></tr>
+                    <% orderid = order.id %>
+                    <td><%= orderid%></td>
+                    <td><%= order.task %></td>
+                    <td><%= order.frequency %></td>
+                    <%# binding.pry  %>
+                <% if order.site != nil %>
+                    <td><%= order.site.name %></td>
+                <% else %>
+                    <td><%= "'no site selected'" %></td>
+                <% end %>
+                    <%# binding.pry %>
+                        <%# binding.pry %>
+                    <td><%= link_to 'edit order', site_order_url(order.site, order), method: :get %>
+                <% if order.attachment.present? %>
+                    <div class="attachment">
+                        <p>
+                        <% binding.pry %>
+                        <td><%= link_to File.basename(order.attachment.url), order.attachment.url %></td>
+                        <td><%=number_to_human_size(order.attachment.size)%></td>
+                        </p>
+                    </div>
+                <% end %>
+        <tr> <% end %></tr>
+        <% render @orders %>
     <% else %>
         <h3><% "no orders are in the db" %></h3>
         <% redirect_to site_orders_url %>

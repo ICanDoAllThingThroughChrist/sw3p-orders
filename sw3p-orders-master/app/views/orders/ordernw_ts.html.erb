@@ -1,8 +1,4 @@
 <fieldset>
 <h4> order task info </h4> 
-<% binding.pry %>
-<% @ordersnw_ts.each do |order| %>
-    <%= render "order" %>
-<% binding.pry %>
-<% end %>
+<%= render partial: "order", collection: @ordersnw_ts %>
 </fieldset>
