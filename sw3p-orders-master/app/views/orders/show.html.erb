@@ -1,5 +1,7 @@
 <% binding.pry %>
+<% if @order.comments.present? %>
 <h4><%= "order's comment:  #{@order.comments.last.comment}" %></h4>
+<% end %>
 <h4><%= "order's task: #{@order.task}" %></h4>
 <% @orderid = @order.id%>
 <p><%= "order ID:#{@orderid}"%></p>
