@@ -13,6 +13,7 @@ class Order < ApplicationRecord #Class Survey
     # has_many :attachments, dependent: :destroy
     # accepts_nested_attributes_for :attachments, reject_if: :all_blank
     mount_uploader :attachment, AttachmentUploader#https://github.com/carrierwaveuploader/carrierwave
+    
     def self.task1
         where(name: 'task1')
     end
@@ -48,7 +49,7 @@ class Order < ApplicationRecord #Class Survey
                         binding.pry
                         a= []
                         self.comments.each {|comment| a << "#{comment.comment}"}
-                        b= a.join( )
+                        b= a.join(' ')
                         self.comments << Comment.create(comment: b) 
                         binding.pry
                end
