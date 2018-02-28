@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
         binding.pry
         @order = Order.new(order_params) 
         binding.pry
-        if @order.save
+        if @order.save!
             binding.pry
             flash[:notice]  = "order saved"
             redirect_to site_orders_url
