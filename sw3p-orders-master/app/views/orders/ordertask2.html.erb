@@ -1,0 +1,12 @@
+<fieldset>
+<h4> order task info </h4> 
+<% binding.pry %>
+<% @orderstask2.each do |order| %>
+    <% orderid = order.id%>
+    <%= "ID: #{orderid}" %><br>
+    <%= "task: #{order.task}" %><br>
+    <%= "deadline: #{order.deadline}"%><br>
+     <%# binding.pry %>
+    <% end %>
+<% binding.pry %>
+</fieldset>

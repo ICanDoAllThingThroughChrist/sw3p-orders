@@ -15,15 +15,16 @@ class Order < ApplicationRecord #Class Survey
     scope :task2, -> {where(name: 'task2')}
     #scope :ne, -> {where(self.site.name: 'NE')}
     def self.task1
-        where(name: 'task1')
+        where(task: 'task1')
     end
     
     def self.task2
-        where(name: 'task2')
+        where(task: 'task2')
     end
 
-    def self.ne 
-        where(site: 'NE')
+    def self.ne
+        binding.pry 
+        where(site_id: 1)
     end
 
         

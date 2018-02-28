@@ -37,12 +37,33 @@ class OrdersController < ApplicationController
 
     def index 
         binding.pry
+        @user = current_user.id
+        @orders = Order.by_author(current_user.id) 
         if current_user
-            @user = current_user.id
-            @orders = Order.by_author(current_user.id) 
-            render :index 
-        else 
-            redirect_to login_url
+            binding.pry
+            if !params[:task].blank? 
+                if params[:task] == "task1"
+                    @orders= Order.all 
+                    @orderstask1= @orders.task1
+                    @orderstask1 
+                    render :file => 'app/views/orders/ordertask1.html.erb'
+                elsif params[:task] == "task2"
+                    @orders= Order.all 
+                    @orderstask2= @orders.task2
+                    @orderstask2 
+                    render :file => 'app/views/orders/ordertask2.html.erb'
+                end 
+            elsif !params[:site_name].blank?
+                binding.pry
+                if params[:site_name] == "NE"
+                    @orders= Order.all 
+                    @ordersne= @orders.ne 
+                    @ordersne 
+                    render :file => 'app/views/orders/ordersne.html.erb'
+                end 
+            end 
+        else
+            @orders
         end 
     end 
 
