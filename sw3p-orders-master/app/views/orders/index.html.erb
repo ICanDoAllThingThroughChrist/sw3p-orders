@@ -35,7 +35,7 @@ table#t01 th {
 </style>
 <%= form_tag(orders_url, method: "get") do %>
     <%= select_tag "task", options_for_select(["task1", "task2"]), include_blank: true %>
-    <%= select_tag "site_name", options_for_select(["NE", "NW"]), include_blank: true %>
+    <%= select_tag "site_name", options_for_select(["NE", "NW", "SW", "SE", "NW_Transfer_Station","SW_Transfer_Station", "SE_Transfer_Station" ]), include_blank: true %>
     <%= submit_tag "Filter" %>
 <% end %>
   <tr>

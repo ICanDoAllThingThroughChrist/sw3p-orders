@@ -60,6 +60,36 @@ class OrdersController < ApplicationController
                     @ordersne= @orders.ne 
                     @ordersne 
                     render :file => 'app/views/orders/ordersne.html.erb'
+                elsif params[:site_name] == "NW"
+                    @orders= Order.all 
+                    @ordersnw= @orders.nw 
+                    @ordersnw 
+                    render :file => 'app/views/orders/ordersnw.html.erb'
+                elsif params[:site_name] == "SW"
+                    @orders= Order.all 
+                    @orderssw= @orders.sw 
+                    @orderssw 
+                    render :file => 'app/views/orders/orderssw.html.erb'
+                elsif params[:site_name] == "SE"
+                    @orders= Order.all 
+                    @ordersse= @orders.se
+                    @ordersse 
+                    render :file => 'app/views/orders/ordersse.html.erb'
+                elsif params[:site_name] == "NW_Transfer_Station"
+                    @orders= Order.all 
+                    @ordersnw_ts= @orders.nwtransferstation 
+                    @ordersnw_ts 
+                    render :file => 'app/views/orders/ordernw_ts.html.erb'
+                elsif params[:site_name] == "SW_Transfer_Station"
+                    @orders= Order.all 
+                    @orderssw_ts= @orders.swtransferstation 
+                    @orderssw_ts 
+                    render :file => 'app/views/orders/ordersw_ts.html.erb'
+                elsif params[:site_name] == "SE_Transfer_Station"
+                    @orders= Order.all 
+                    @ordersse_ts= @orders.setransferstation 
+                    @ordersse_ts 
+                    render :file => 'app/views/orders/orderse_ts.html.erb'
                 end 
             end 
         else

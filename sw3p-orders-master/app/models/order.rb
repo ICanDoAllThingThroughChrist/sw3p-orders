@@ -23,11 +23,39 @@ class Order < ApplicationRecord #Class Survey
     end
 
     def self.ne
-        binding.pry 
+        #binding.pry 
         where(site_id: 1)
     end
 
-        
+    def self.nw
+        #binding.pry 
+        where(site_id: 2)
+    end 
+
+    def self.sw
+        #binding.pry 
+        where(site_id: 3)
+    end
+
+    def self.se
+        binding.pry 
+        where(site_id: 4)
+    end
+      
+    def self.nwtransferstation
+        #binding.pry 
+        where(site_id: 5)
+    end
+
+    def self.swtransferstation
+        #binding.pry 
+        where(site_id: 6)
+    end
+    
+    def self.setransferstation
+        #binding.pry 
+        where(site_id: 7)
+    end
     # def save_comment_names
     #     if @comment_names 
     #         binding.pry
