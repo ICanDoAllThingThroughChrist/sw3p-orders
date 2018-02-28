@@ -94,6 +94,7 @@ class OrdersController < ApplicationController
             end 
         else
             @orders
+            redirect_to site_orders_url
         end 
     end 
 
