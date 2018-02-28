@@ -11,7 +11,7 @@
         <% binding.pry %>
         <%= link_to File.basename(@order.attachment.url),
         @order.attachment.url %>
-        (<%=number_to_human_size(@order.attachment.size)%>)
+        <%=number_to_human_size(@order.attachment.size)%>
         </p>
          </div>
     <% end %>
