@@ -131,6 +131,7 @@ class OrdersController < ApplicationController
     def destroy
         @order = Order.find(params[:id]) 
         @order.destroy
+        @orders = Order.by_author(current_user.id).paginate(:page => params[:page], :per_page => 8)
         flash[:success] = "Order Deleted"
         render :index 
     end 
