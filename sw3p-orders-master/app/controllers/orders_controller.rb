@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     def index 
         binding.pry
         @user = current_user.id
-        @orders = Order.by_author(current_user.id) 
+        @orders = Order.by_author(current_user.id).paginate(:page => params[:page], :per_page => 8)
         if current_user
             binding.pry
             if !params[:task].blank? 

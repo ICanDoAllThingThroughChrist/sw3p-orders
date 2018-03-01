@@ -36,10 +36,10 @@
   <%#= ff.file_field :file, as: :file, label: "File##{ff.index + 1}" %>
   <%#= ff.file_field :file_cache, as: :hidden %>
   <%# end %>
-  <div class="field">
-      <%=f.label :attachment %><br>
-      <%=f.file_field :attachment%>
+    <div class="field">
+      <li><%=f.label :attachment %></li>
+      <li><%=f.file_field :attachment%></li>
       <%=f.hidden_field :attachment_cache %>
-  </div> 
+    </div>
   <%= f.submit %>
   <% end %>

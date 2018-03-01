@@ -2,7 +2,7 @@
 <%# if current_user %>
     <% @site.each_with_index do |site, site_index| %>
         <%# binding.pry %>
-        <%= link_to "#{site.name}", site_path(site) %><br>
+        <h4><%= link_to "#{site.name}", site_path(site) %></h4>
         <%#https://stackoverflow.com/questions/1898737/pass-parameter-by-link-to-ruby-on-rails%>
     <% end %>
 <%# end %>

@@ -11,7 +11,7 @@ table, th, td {
 }
 th, td {
     padding: 5px;
-    text-align: left;
+    text-align: center;
 }
 table#t01 tr:nth-child(even) {
     background-color: #eee;
@@ -26,10 +26,10 @@ table#t01 th {
 </style>
 </head>
 <body>
-<table id="t01" style="width:20%">
+<table id="t01" style="width:20%, float:right" border="1">
 <style type="text/css">
    table {
-    overflow:scroll;
+      overflow:scroll;
 }
    tr    { page-break-inside:avoid; page-break-after:auto }
 </style>
@@ -84,5 +84,6 @@ table#t01 th {
      <% end %>
   </table>
 </body>
+<%= will_paginate @orders %>
 </html>
 
