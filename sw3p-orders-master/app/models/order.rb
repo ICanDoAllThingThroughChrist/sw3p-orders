@@ -2,7 +2,8 @@ class Order < ApplicationRecord #Class Survey
     #before_save :save_comment_names
     #attr_accessor :comment_names
     #attr_writer :comment_names
-    attr_accessor :attachment
+    attr_accessor :attachment, :attachment_cache
+    attr_writer :attachment
     belongs_to :user
     belongs_to :site#
     has_many :ordercomments

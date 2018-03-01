@@ -19,11 +19,6 @@
       <%= f.label :status %><br>
       <%= f.select :status, ['status1', 'status2'] %><br>
     </div>
-    <div class="field">
-    <%= f.label :attachment %><br>
-    <%=f.file_field :attachment%>
-    <%=f.hidden_field :attachment_cache %>
-    </div>
      <%# binding.pry %>
     <%#b/c string value of comments during update as opposed to hash during create
     , this field'll not appear in order#update call, unless @order.comments.build is called%>
@@ -41,5 +36,10 @@
   <%#= ff.file_field :file, as: :file, label: "File##{ff.index + 1}" %>
   <%#= ff.file_field :file_cache, as: :hidden %>
   <%# end %>
+  <div class="field">
+      <%=f.label :attachment %><br>
+      <%=f.file_field :attachment%>
+      <%=f.hidden_field :attachment_cache %>
+  </div> 
   <%= f.submit %>
   <% end %>

@@ -23,11 +23,12 @@ class OrdersController < ApplicationController
         #raise.params.inspect #https://agilewarrior.wordpress.com/2011/10/22/rails-drop-downs/
         binding.pry
         @order = Order.new(order_params) 
+        #@order.attachment= order_params[:attachment]
         binding.pry
         if @order.save!
             binding.pry
             flash[:notice]  = "order saved"
-            redirect_to site_orders_url
+            redirect_to orders_url
         else
             binding.pry
             flash[:notice]  = "Could not save order"
